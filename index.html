@@ -42,7 +42,7 @@
                     })
                 }
                 else {
-                    article.innerHTML = `<p><b>404:</b> Page <i>${load_page}</i> not exist!</p>`;
+                    article.innerHTML = `<p><b>404:</b> Page <i>${load_page.slice(0, -1)}</i> not exist!</p>`;
                 }
             })
 

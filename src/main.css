@@ -6,7 +6,22 @@
 
 body {
   background-color: #101010;
-  font-family: "urw-din",sans-serif;
+  font-family: "urw-din", sans-serif;
+  color: #ffffff;
+}
+
+a {
+  color: #d0e1f3;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #007bff;
+}
+
+a:visited {
+  color: #446383;
 }
 
 header {
@@ -47,12 +62,11 @@ nav>ul>li {
 }
 
 nav>ul>li>a {
-  cursor: pointer;
-  text-decoration: none;
+  color: #8f8f72;
 }
 
-nav>ul>li>a:hover {
-  color: #007bff;
+nav>ul>li>a:visited {
+  color: #8f8f72;
 }
 
 article {
@@ -76,7 +90,7 @@ article>p {
   line-height: 1.67;
 }
 
-article img{
+article img {
   max-width: 100%;
 }
 
@@ -95,7 +109,7 @@ article img[alt$="><"] {
   max-width: 100%;
   height: auto;
   margin: auto;
-  float: none!important;
+  float: none !important;
 }
 
 article>pre {
@@ -105,15 +119,14 @@ article>pre {
   overflow-y: auto;
 }
 
-article>ol>li{
+article>ol>li {
   list-style: decimal outside;
   vertical-align: baseline;
   margin: 0 0 0 2rem;
   line-height: 1.58;
 }
 
-
-article>ul>li{
+article>ul>li {
   list-style: disc outside;
   vertical-align: baseline;
   margin: 0 0 0 2rem;
@@ -126,4 +139,3 @@ footer {
   padding: .5rem 2rem;
   text-align: right;
 }
-
