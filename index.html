@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Frankrx41's Blog</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="/src/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/src/main.css">
+</head>
+
+<body>
+    <header>
+        <h1>Frankrx41's blog</h1>
+        <p><nobr>Technology and Art</nobr></p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <!-- <li><a href="">Contact</a></li> -->
+        </ul>
+    </nav>
+
+    <article>
+        <p>Loading...</p>
+    </article>
+
+    <script>
+        // URL: ? blog-title-name & other-key=value
+        const params = new URLSearchParams(location.search);
+        load_page = [...params][0];
+        // Remove last char ','
+        load_page = load_page != undefined ? load_page.slice(0, -1) : "";
+        article = document.getElementsByTagName('article')[0];
+
+        fetch('/archive/' + load_page + '/index.txt')
+            .then(response => {
+                if (response.ok) {
+                    return response.text().then(text => {
+                        article.innerHTML = text;
+                    })
+                }
+                else {
+                    article.innerHTML = `<p><b>404:</b> Page <i>${load_page}</i> not exist!</p>`;
+                }
+            })
+
+    </script>
+
+    <footer><i>frankrx41 2022</i></footer>
+</body>
+
+</html>
