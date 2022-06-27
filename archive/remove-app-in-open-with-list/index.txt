@@ -1,0 +1,58 @@
+<h1>How to remove app in open with list</h1>
+<p>We all know that there are many different file types in the computer, and each file has its own program to open it.</p>
+<p>In Windows OS, programs that can open files of this type will be placed in <strong>Open with</strong> in the right-click menu.</p>
+<p>As you can see, there are two deleted program in my right-click menu open with list.</p>
+<p><img alt="right menu" src="/archive/remove-app-in-open-with-list/Clip_20220622_011044.png" /></p>
+<p><img alt="open with list" src="/archive/remove-app-in-open-with-list/Clip_20220622_012324.png" /></p>
+<p>Google Chrome and WPS PDF.</p>
+<p>These software have been removed from this computer by me,
+but their installation information remains in the registry.</p>
+<p>Let me show you how to delete them.</p>
+<p>P.S. I'm assuming you have a general understanding of computers and know what a registry is.</p>
+<h2>WPS PDF</h2>
+<p>To find out where the Key is in the registry, I do follow:</p>
+<ol>
+<li>Open regedit</li>
+<li>Make a global search "WPS PDF"</li>
+</ol>
+<p>Then I found the following locations:</p>
+<pre><code class="language-reg">HKEY_CLASSES_ROOT\Applications\wpspdf.exe
+</code></pre>
+<p>And I don't found a key that may be related to it elsewhere.
+So I guess, this key is the information left in the registry.</p>
+<p>After deleting this key, "WSP PDF" removed from open with list.</p>
+<p>(You should make a <strong>backup</strong> of the registry in advance)</p>
+<h2>Google Chrome in .html</h2>
+<p>To find out where the Key is in the registry, I do follow:</p>
+<ol>
+<li>Open regedit</li>
+<li>Make a global search "Google Chrome"</li>
+</ol>
+<p>Unlike last time, this time I found a lot of similar keys.</p>
+<p><img alt="found &quot;Google Chrome&quot;" src="/archive/remove-app-in-open-with-list/Clip_20220622_023233.png" /></p>
+<p>So I switched my thinking and started with the file extension.</p>
+<p>Because the extension of this file is <code>.html</code>, so I goto this location:</p>
+<pre><code class="language-reg">HKEY_CLASSES_ROOT\.html\OpenWithProgids
+</code></pre>
+<p><img alt=".html OpenWithProgids" src="/archive/remove-app-in-open-with-list/Clip_20220622_013000.png" /></p>
+<p>Here I found a suspicious key <code>ChromeHTML</code>, so I deleted it.</p>
+<p>Later, "Google Chrome" was also removed from the open with list.</p>
+<h2>Google Chrome in other extensions file</h2>
+<p>After that I look globally for the word ChromeHTML in the registry.
+I found that in addition to <code>.html</code>, <code>.htm</code> <code>.shtml</code> <code>.svg</code> <code>.xht</code> <code>.xhtml</code> also have <code>ChromeHTML</code> in <code>OpenWithProgids</code> key.</p>
+<p>I tried creating several files with these extensions and sure enough "Google Chrome" was in their open with list.</p>
+<p>So I delete <code>HKEY_CLASSES_ROOT\ChromeHTML</code> and then "Google Chrome" was also removed from their open with list.</p>
+<h2>KuGou8</h2>
+<p>In the process of searching, I found that there is a <code>kugou8</code> key in my registry.</p>
+<p>I created an mp3 file, and in the open with list, there is indeed a kugou program.</p>
+<p><img alt="Open with kugou" src="/archive/remove-app-in-open-with-list/Clip_20220622_033135.png" /></p>
+<p>From experience, I suspect it is and . mp3 this suffix is bound.
+So I goto:</p>
+<pre><code class="language-reg">HKEY_CLASSES_ROOT\.mp3
+</code></pre>
+<p>And found a key <code>kugou8.mp3</code></p>
+<p><img alt="mp3 key" src="/archive/remove-app-in-open-with-list/Clip_20220622_032016.png" /></p>
+<p>After I remove it, "Kugou" is remove from my open with list.</p>
+<p>However, there are still many other files that are bundled with kugou. Like <code>.wav</code> <code>.flac</code> <code>.wma</code></p>
+<p>I'm a little tired, so I looked for kugou8 globally in the registry and deleted them all.</p>
+<p><img alt="delete kugou" src="/archive/remove-app-in-open-with-list/Clip_20220622_033937.png" /></p>
