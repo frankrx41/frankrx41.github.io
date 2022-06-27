@@ -31,10 +31,10 @@
         const params = new URLSearchParams(location.search);
         load_page = [...params][0];
         // Remove last char ','
-        load_page = load_page != undefined ? load_page.slice(0, -1) : "";
+        load_page = load_page != undefined ? load_page.slice(0, -1) + "/" : "";
         article = document.getElementsByTagName('article')[0];
 
-        fetch('/archive/' + load_page + '/index.txt')
+        fetch('/archive/' + load_page + 'index.txt')
             .then(response => {
                 if (response.ok) {
                     return response.text().then(text => {
