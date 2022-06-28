@@ -90,6 +90,37 @@ article>p {
   line-height: 1.67;
 }
 
+article>p code {
+  color-scheme: dark;
+  text-rendering: optimizeSpeed;
+  accent-color: #5e9eff;
+  overflow-wrap: break-word;
+  letter-spacing: .02rem;
+  box-sizing: border-box;
+  animation-duration: .01ms !important;
+  animation-iteration-count: 1 !important;
+  scroll-behavior: auto !important;
+  transition-duration: .01ms !important;
+  border-radius: 0.25rem;
+  background: #343434;
+  padding: .125rem .25rem;
+  width: fit-content;
+}
+
+article kbd {
+  background-color: #eeeeee;
+  border-radius: 3px;
+  border: 1px solid #b4b4b4;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .2), 0 2px 0 0 rgba(255, 255, 255, .7) inset;
+  color: #333333;
+  display: inline-block;
+  font-size: .85em;
+  font-weight: 700;
+  line-height: 1;
+  padding: 2px 4px;
+  white-space: nowrap;
+}
+
 article img {
   max-width: 100%;
 }
