@@ -27,7 +27,7 @@ stat_cov = 0
 stat_err = 0
 stat_wip = 0
 stat_str = 0
-
+stat_cov_file_name = []
 
 def main(argv):
     force_covert    : bool      = False
@@ -91,7 +91,7 @@ def process_single_file(force_covert: bool, print_html: bool, blog_dir: os.path,
         coverted_html = ""
         with open(os.path.join(archive_full_path, md_file_name), 'r', encoding='UTF-8') as f:
             text = f.read()
-            coverted_html = markdown.markdown(text, extensions=['fenced_code'])
+            coverted_html = markdown.markdown(text, extensions=['fenced_code', 'tables'])
 
         # './' => '/{blog_dir}/'
         coverted_html = coverted_html.replace('src="./', 'src="/archive/' + blog_dir + "/")
@@ -115,6 +115,7 @@ def process_single_file(force_covert: bool, print_html: bool, blog_dir: os.path,
             with open(os.path.join(archive_full_path, html_file_name), 'w', encoding='UTF-8') as f:
                 f.write(coverted_html)
         print(f'{Fore.GREEN}[COV]:\t{html_file_name} {Style.RESET_ALL}')
+        stat_cov_file_name.append(blog_dir)
         stat_cov += 1
 
     print(f'[END]:\t')
@@ -138,6 +139,7 @@ def print_stat():
     print(f'stat_str: {stat_str}')
     print(f'stat_wip: {stat_wip}')
     print(f'stat_cov: {stat_cov}')
+    print(f'Covert files: {stat_cov_file_name}')
     if stat_err > 0:
         print(f'{Fore.RED}stat_err: {stat_err} {Style.RESET_ALL}')
     else:

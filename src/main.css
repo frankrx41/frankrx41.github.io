@@ -118,7 +118,24 @@ article kbd {
   font-weight: 700;
   line-height: 1;
   padding: 2px 4px;
-  white-space: nowrap;
+  white-space: nowrap;;
+}
+
+article table {
+  table-layout: fixed;
+  max-width: 100%;
+  border-collapse: collapse;
+  line-height: 1.67;
+}
+
+article th {
+  background: #242728;
+  padding: .5rem;
+}
+
+article td {
+  border: 1px solid #282828;
+  padding: .5rem;
 }
 
 article img {
