@@ -4,34 +4,35 @@
 <h2>一些介绍和常识</h2>
 <ul>
 <li>这个博客和 hexo 的类似，都是按照 md 的格式编写文章，然后转成 html 的格式</li>
-<li>在 windows 系统中，我们使用 "\"，但是在 html 中，我们使用 /</li>
+<li>在 windows 系统中，我们使用 "\"，但是在 html 中，我们使用 "/"</li>
+<li>"/" 表示网站的根目录，"./" 表示该文件所在的目录</li>
 </ul>
 <h2>关于博客的结构</h2>
 <p>假设 / 是根目录</p>
 <ul>
 <li>/archive 是你放文章的地方，每个文章必须有自己的子文件夹</li>
 <li>/src 这里面放了一些 .css 文件，以后 .js 文件也会放在这里面</li>
-<li>index.html 这个文件负责解析 url，并动态的加载对应的网页到该页面中进行显示</li>
+<li>/index.html 这个文件负责解析 url，并动态的加载对应的网页到该页面中进行显示</li>
 <li>除了主页和 404 使用 html 后缀，其他的文件都使用 txt 作为后缀</li>
 </ul>
 <h2>怎么写一篇新的文章</h2>
 <p>首先我们需要在 /archive 这里创建一个文件夹<br />
 我推荐的格式是，全小写，使用 <code>-</code> 替换空格</p>
 <p>然后进入我们刚刚创建的文件夹，新建一个 index.md 文件</p>
-<p>文章可以按照 markdown 边准 + fenced_code 扩展来进行编写</p>
+<p>文章可以按照 markdown 标准 + fenced_code 扩展来进行编写</p>
 <p>我使用的 editor 是 vscode + markdownlint</p>
 <p><strong>Note:</strong></p>
 <ul>
-<li>关于新文章的名字，必须叫 'index.md'，如果修改的话，请同时修改 generat-blog.py 脚本中的 <code>md_file_name</code></li>
-<li>插入图片的话，如果使用相对路径，请一定要在文件的前面加上 ./</li>
-<li>可以在图片的方括号<code>[]</code>的末尾使用 <code>&lt;</code> <code>&gt;</code> <code>&gt;&lt;</code> 来控制漂浮</li>
+<li>关于新文章的名字，必须叫 "index.md"，如果修改的话，请同时修改 generat-blog.py 脚本中的 <code>md_file_name</code></li>
+<li>插入文件时，如果使用的是相对路径，请一定要在文件的前面加上 ./</li>
+<li>可以在图片的方括号<code>[]</code>的末尾使用 <code>&lt;</code> <code>&gt;</code> <code>&gt;&lt;</code> 来控制漂浮位置</li>
 </ul>
 <h2>怎么生成博客</h2>
 <p>所有生成博客的步骤都融合到了 generat-blog.py 这个脚本里面，只需要运行它就好了</p>
-<p>这个脚本会读取所有 /archive 文件夹下面的 index.md 文件，判断
-如果没有被转过 html，或者 index.md 被更新了，就会把它转成 html
-最后会生成一个导航的 ./archive/index.txt</p>
-<p>关于这些生成的文件怎么被使用的，就是 ./404.html 和 ./index.html 的工作了</p>
+<p>这个脚本会读取 /archive 文件夹下面所有的 index.md 文件，判断，
+如果没有被转过 html，或者 index.md 被更新了，就会把它转成 html。
+最后会生成一个导航的 /archive/index.txt</p>
+<p>关于这些生成的文件怎么被使用的，就是 /404.html 和 /index.html 的工作了</p>
 <p><strong>Note:</strong></p>
 <ul>
 <li>这个脚本依赖于 markdown 这个库</li>
