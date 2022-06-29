@@ -223,13 +223,15 @@ article blockquote.alerts-important {
 article ol li {
   list-style: decimal outside;
   vertical-align: baseline;
-  margin: 0 0 0 2rem;
 }
 
 article ul li {
   list-style: disc outside;
   vertical-align: baseline;
-  margin: 0 0 0 2rem;
+}
+
+article li {
+  margin: .5rem 0 0 2rem;
 }
 
 footer {
