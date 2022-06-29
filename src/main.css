@@ -4,10 +4,14 @@
   box-sizing: border-box;
 }
 
+:root {
+  --theme-text: #ffffff;
+}
+
 body {
   background-color: #101010;
   font-family: "urw-din", sans-serif;
-  color: #ffffff;
+  color: var(--theme-text);
 }
 
 a {
@@ -30,7 +34,7 @@ header {
   border-bottom: 1px solid gray;
 }
 
-header>h1 {
+header h1 {
   font-size: 2em;
   margin: 0;
   display: inline;
@@ -38,7 +42,7 @@ header>h1 {
   text-shadow: 2px 2px 1px #010101;
 }
 
-header>p {
+header p {
   font-size: 1em;
   margin: 0;
   display: inline;
@@ -50,22 +54,22 @@ nav {
   border-bottom: 1px solid gray;
 }
 
-nav>ul {
+nav ul {
   display: flex;
   padding: .5rem 1rem;
 }
 
-nav>ul>li {
+nav ul li {
   flex-direction: row;
   padding: 0 .5rem;
   list-style: none;
 }
 
-nav>ul>li>a {
+nav ul li a {
   color: #8f8f72;
 }
 
-nav>ul>li>a:visited {
+nav ul li a:visited {
   color: #8f8f72;
 }
 
@@ -78,19 +82,26 @@ article {
   max-width: 800px;
 }
 
-article>* {
-  margin-bottom: 1.25rem;
+article * {
+  margin: 1rem 0 0 0;
 }
 
-article>h1 {
-  margin: 2rem 0;
+article h1,
+article h2 {
+  margin: 2.5rem 0 1rem 0;
+}
+article h3,
+article h4,
+article h5,
+article h6 {
+  margin: 2rem 0 1rem 0;
 }
 
-article>p {
+article p {
   line-height: 1.67;
 }
 
-article>p code {
+article p code {
   color-scheme: dark;
   text-rendering: optimizeSpeed;
   accent-color: #5e9eff;
@@ -118,7 +129,8 @@ article kbd {
   font-weight: 700;
   line-height: 1;
   padding: 2px 4px;
-  white-space: nowrap;;
+  white-space: nowrap;
+  margin: 0;
 }
 
 article table {
@@ -140,45 +152,84 @@ article td {
 
 article img {
   max-width: 100%;
+  display: block;
+  margin: 0;
+  padding: .5rem 0;
 }
 
 article img[alt$=">"] {
   float: right;
-  padding-left: 1rem
+  padding-left: 1rem;
 }
 
 article img[alt$="<"] {
   float: left;
-  padding-right: 1rem
+  padding-right: 1rem;
 }
 
 article img[alt$="><"] {
-  display: block;
-  max-width: 100%;
-  height: auto;
   margin: auto;
   float: none !important;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-article>pre {
+article pre {
   background-color: #222222;
   border: 1px solid #ddd;
-  padding: 1.5rem;
+  padding: .5rem;
   overflow-y: auto;
 }
 
-article>ol>li {
+article blockquote {
+  background: #202020;
+  border-left: .5rem solid #ccc;
+  padding: .5rem;
+  font-weight: 400;
+}
+
+article blockquote>p {
+  margin-top: 0;
+}
+
+article blockquote.alerts-tip:before {
+  content: "Tip";
+}
+
+article blockquote.alerts-note:before {
+  content: "Note";
+}
+
+article blockquote.alerts-important:before {
+  content: "Important";
+}
+
+article blockquote.alerts-tip {
+  background-color: #443f3f;
+}
+
+article blockquote.alerts-note {
+  background-color: #425c8d;
+}
+
+article blockquote.alerts-warning {
+  background-color: #8d6842;
+}
+
+article blockquote.alerts-important {
+  background-color: #3f2525;
+}
+
+article ol li {
   list-style: decimal outside;
   vertical-align: baseline;
   margin: 0 0 0 2rem;
-  line-height: 1.58;
 }
 
-article>ul>li {
+article ul li {
   list-style: disc outside;
   vertical-align: baseline;
   margin: 0 0 0 2rem;
-  line-height: 1.58;
 }
 
 footer {
