@@ -18,6 +18,8 @@ import re
 from colorama import Fore
 from colorama import Style
 
+markdown_extensions = ['fenced_code', 'tables']
+
 archives_path = os.path.join('./', 'archive')
 html_file_name          = 'index.txt'
 md_file_name            = 'index.md'
@@ -91,7 +93,7 @@ def process_single_file(force_covert: bool, print_html: bool, blog_dir: os.path,
         coverted_html = ""
         with open(os.path.join(archive_full_path, md_file_name), 'r', encoding='UTF-8') as f:
             text = f.read()
-            coverted_html = markdown.markdown(text, extensions=['fenced_code', 'tables'])
+            coverted_html = markdown.markdown(text, extensions=markdown_extensions)
 
         # './' => '/{blog_dir}/'
         coverted_html = coverted_html.replace('src="./', 'src="/archive/' + blog_dir + "/")
@@ -100,6 +102,7 @@ def process_single_file(force_covert: bool, print_html: bool, blog_dir: os.path,
         re_found = re.search('src="[^\./]', coverted_html)
         if re_found:
             print(f'{Fore.RED}[ERR]:\t {re_found} {Style.RESET_ALL}')
+            print(coverted_html)
             stat_err += 1
             return ""
 
