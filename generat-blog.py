@@ -5,14 +5,17 @@
 # -f force convert
 # -p print html
 #
-# -s <blog_path_name> force covert this md file, NOT update /archive/index.txt and {blog_path_name}/index.txt, should use for debug only
+# -n not write to {blog_path_name}/index.txt
+# -s <blog_path_name> force covert this md file, NOT update /archive/index.txt
 #
 
+from distutils.file_util import write_file
 import sys
 import getopt
 import os
 from xmlrpc.client import boolean
-import commonmark
+from markdown_it import MarkdownIt
+md = MarkdownIt("commonmark").enable('table').enable('strikethrough')
 import re
 
 from colorama import Fore
@@ -33,9 +36,10 @@ def main(argv):
     force_covert    : bool      = False
     print_html      : bool      = False
     single_file     : os.path   = ""
+    save_to_file    : bool      = True
 
     try:
-        opts, args = getopt.getopt(argv,"fps:")
+        opts, args = getopt.getopt(argv,"fps:n")
     except getopt.GetoptError as err:
         print(err)
         sys.exit(2)
@@ -46,11 +50,13 @@ def main(argv):
             print_html = True
         elif opt == '-s':
             single_file = arg
+        elif opt == '-n':
+            save_to_file = False
     
     if single_file != "":
-        process_single_file(force_covert, print_html, single_file, False)
+        process_single_file(force_covert, print_html, single_file, save_to_file)
     else:
-        html_text = process_archives(force_covert, print_html)
+        html_text = process_archives(force_covert, print_html, save_to_file)
         print_stat()
         write_html(os.path.join(archives_path, html_file_name), html_text)
     return
@@ -91,7 +97,7 @@ def process_single_file(force_covert: bool, print_html: bool, blog_dir: os.path,
         coverted_html = ""
         with open(os.path.join(archive_full_path, md_file_name), 'r', encoding='UTF-8') as f:
             text = f.read()
-            coverted_html = commonmark.commonmark(text)
+            coverted_html = md.render(text)
 
         # './' => '/{blog_dir}/'
         coverted_html = coverted_html.replace('src="./', 'src="/archive/' + blog_dir + "/")
@@ -110,11 +116,11 @@ def process_single_file(force_covert: bool, print_html: bool, blog_dir: os.path,
             coverted_html = re.sub(f'<code>({key_name[0]})</code>', f'<kbd>{key_name[1]}</kbd>', coverted_html, flags=re.IGNORECASE)
 
         # tip note important
-        str_list = [    {0: '<blockquote>\n<p><strong>tip</strong></p>', 1: '<blockquote class="tip">'},
-                        {0: '<blockquote>\n<p><strong>note</strong></p>', 1: '<blockquote class="note">'},
-                        {0: '<blockquote>\n<p><strong>important</strong></p>', 1: '<blockquote class="important">'}]
-        for key_name in key_list:
-            coverted_html = re.sub(key_name[0], key_name[1], coverted_html, flags=re.IGNORECASE)
+        str_list = [    {0: '<blockquote>\n<p><strong>tip:*</strong></p>', 1: '<blockquote class="alerts-tip">'},
+                        {0: '<blockquote>\n<p><strong>note:*</strong></p>', 1: '<blockquote class="alerts-note">'},
+                        {0: '<blockquote>\n<p><strong>important:*</strong></p>', 1: '<blockquote class="alerts-important">'}]
+        for str_name in str_list:
+            coverted_html = re.sub(str_name[0], str_name[1], coverted_html, flags=re.IGNORECASE)
 
         if print_html:
             print(coverted_html)
@@ -130,11 +136,11 @@ def process_single_file(force_covert: bool, print_html: bool, blog_dir: os.path,
     return f'<li><a href="?{blog_dir}">{blog_dir}</a></li>\n'
 
 
-def process_archives(force_covert: bool, print_html: bool):
+def process_archives(force_covert: bool, print_html: bool, save_to_file: bool):
     output_html = '<ul>\n'
     for blog_dir in os.listdir(archives_path):
         if os.path.isdir(os.path.join(archives_path, blog_dir)):
-           output_html += process_single_file(force_covert, print_html, blog_dir, True)
+           output_html += process_single_file(force_covert, print_html, blog_dir, save_to_file)
 
     output_html += '</ul>'
 
