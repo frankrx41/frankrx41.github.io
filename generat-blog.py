@@ -12,13 +12,11 @@ import sys
 import getopt
 import os
 from xmlrpc.client import boolean
-import markdown
+import commonmark
 import re
 
 from colorama import Fore
 from colorama import Style
-
-markdown_extensions = ['fenced_code', 'tables']
 
 archives_path = os.path.join('./', 'archive')
 html_file_name          = 'index.txt'
@@ -93,7 +91,7 @@ def process_single_file(force_covert: bool, print_html: bool, blog_dir: os.path,
         coverted_html = ""
         with open(os.path.join(archive_full_path, md_file_name), 'r', encoding='UTF-8') as f:
             text = f.read()
-            coverted_html = markdown.markdown(text, extensions=markdown_extensions)
+            coverted_html = commonmark.commonmark(text)
 
         # './' => '/{blog_dir}/'
         coverted_html = coverted_html.replace('src="./', 'src="/archive/' + blog_dir + "/")
