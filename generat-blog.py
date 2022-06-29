@@ -105,9 +105,16 @@ def process_single_file(force_covert: bool, print_html: bool, blog_dir: os.path,
             return ""
 
         # `KEY` => <kbd>KEY</kbd>
-        key_list = [{1: 'Ctrl', 2: 'Ctrl'},  {1: 'Shift', 2: '⇧'},  {1: 'Esc', 2: 'Esc'},  {1: 'Win', 2: 'Win'},  {1: 'Cmd', 2: 'Cmd'},  {1: 'Enter', 2: '⏎'},  {1: 'PgUp', 2: 'PgUp'},  {1: 'PgDn', 2: 'PgDn'},  {1: 'Home', 2: 'Home'},  {1: 'End', 2: 'End'},  {1: 'Backspace', 2: '⌫'},  {1: '&lt;-', 2: '←'}, {1:'-&gt;', 2: '→'}, {1: '\^\|', 2:'↑'}, {1: 'v\|', 2:'↓'}, {1: 'Tab', 2: 'Tab'},  {1: 'A', 2: 'A'},  {1: 'B', 2: 'B'},  {1: 'C', 2: 'C'},  {1: 'D', 2: 'D'},  {1: 'E', 2: 'E'},  {1: 'F', 2: 'F'},  {1: 'G', 2: 'G'},  {1: 'H', 2: 'H'},  {1: 'I', 2: 'I'},  {1: 'J', 2: 'J'},  {1: 'K', 2: 'K'},  {1: 'L', 2: 'L'},  {1: 'M', 2: 'M'},  {1: 'N', 2: 'N'},  {1: 'O', 2: 'O'},  {1: 'P', 2: 'P'},  {1: 'Q', 2: 'Q'},  {1: 'R', 2: 'R'},  {1: 'S', 2: 'S'},  {1: 'T', 2: 'T'},  {1: 'U', 2: 'U'},  {1: 'V', 2: 'V'},  {1: 'W', 2: 'W'},  {1: 'X', 2: 'X'},  {1: 'Y', 2: 'Y'},  {1: 'Z', 2: 'Z'},  {1: 'Up', 2: '↑'},  {1: 'Down', 2: '↓'},  {1: 'Left', 2: '←'}, {1: 'Right', 2: '→'}]
+        key_list = [{0: 'Ctrl', 1: 'Ctrl'},  {0: 'Shift', 1: '⇧'},  {0: 'Esc', 1: 'Esc'},  {0: 'Win', 1: 'Win'},  {0: 'Cmd', 1: 'Cmd'},  {0: 'Enter', 1: '⏎'},  {0: 'PgUp', 1: 'PgUp'},  {0: 'PgDn', 1: 'PgDn'},  {0: 'Home', 1: 'Home'},  {0: 'End', 1: 'End'},  {0: 'Backspace', 1: '⌫'},  {0: '&lt;-', 1: '←'}, {0:'-&gt;', 1: '→'}, {0: '\^\|', 1:'↑'}, {0: 'v\|', 1:'↓'}, {0: 'Tab', 1: 'Tab'},  {0: 'A', 1: 'A'},  {0: 'B', 1: 'B'},  {0: 'C', 1: 'C'},  {0: 'D', 1: 'D'},  {0: 'E', 1: 'E'},  {0: 'F', 1: 'F'},  {0: 'G', 1: 'G'},  {0: 'H', 1: 'H'},  {0: 'I', 1: 'I'},  {0: 'J', 1: 'J'},  {0: 'K', 1: 'K'},  {0: 'L', 1: 'L'},  {0: 'M', 1: 'M'},  {0: 'N', 1: 'N'},  {0: 'O', 1: 'O'},  {0: 'P', 1: 'P'},  {0: 'Q', 1: 'Q'},  {0: 'R', 1: 'R'},  {0: 'S', 1: 'S'},  {0: 'T', 1: 'T'},  {0: 'U', 1: 'U'},  {0: 'V', 1: 'V'},  {0: 'W', 1: 'W'},  {0: 'X', 1: 'X'},  {0: 'Y', 1: 'Y'},  {0: 'Z', 1: 'Z'},  {0: 'Up', 1: '↑'},  {0: 'Down', 1: '↓'},  {0: 'Left', 1: '←'}, {0: 'Right', 1: '→'}]
         for key_name in key_list:
-            coverted_html = re.sub(f'<code>({key_name[1]})</code>', f'<kbd>{key_name[2]}</kbd>', coverted_html, flags=re.IGNORECASE)
+            coverted_html = re.sub(f'<code>({key_name[0]})</code>', f'<kbd>{key_name[1]}</kbd>', coverted_html, flags=re.IGNORECASE)
+
+        # tip note important
+        str_list = [    {0: '<blockquote>\n<p><strong>tip</strong></p>', 1: '<blockquote class="tip">'},
+                        {0: '<blockquote>\n<p><strong>note</strong></p>', 1: '<blockquote class="note">'},
+                        {0: '<blockquote>\n<p><strong>important</strong></p>', 1: '<blockquote class="important">'}]
+        for key_name in key_list:
+            coverted_html = re.sub(key_name[0], key_name[1], coverted_html, flags=re.IGNORECASE)
 
         if print_html:
             print(coverted_html)
