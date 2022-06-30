@@ -90,12 +90,8 @@ def process_single_file(force_covert: bool, print_html: bool, blog_dir: os.path,
         md_text = f.read()
 
     md_firstline = md_text.split('\n', maxsplit=1)[0]
-    if md_firstline.lower() == 'todo':
-        print(f'{Fore.YELLOW}[WIP]:\tRemove "TODO" mark to continue {Style.RESET_ALL}')
-        stat_wip += 1
-        return ""
 
-    if md_firstline == '':
+    if md_firstline == '' or md_firstline[0] != '#':
         print(f'{Fore.YELLOW}[WIP]:\tMake first line be H1 mark to continue {Style.RESET_ALL}')
         stat_wip += 1
         return ""
