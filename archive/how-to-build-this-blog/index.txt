@@ -1,43 +1,54 @@
-<h1>How to build this blog</h1>
-<p>我很高兴你对我的博客感兴趣，并且想知道它是如何构建的<br />
-出于对 github 的感谢，我决定开源这个博客制作的方法和流程</p>
+<h1>如何构建这个博客</h1>
+<p>我很高兴你对我的博客感兴趣, 并且想知道它是如何构建的</p>
+<p>出于对 github 的感谢, 我决定开源这个博客制作的方法和流程</p>
 <h2>一些介绍和常识</h2>
 <ul>
-<li>这个博客和 hexo 的类似，都是按照 md 的格式编写文章，然后转成 html 的格式</li>
-<li>在 windows 系统中，我们使用 "\"，但是在 html 中，我们使用 "/"</li>
-<li>"/" 表示网站的根目录，"./" 表示该文件所在的目录</li>
+<li>这个博客和 hexo 的类似, 都是按照 md 的格式编写文章, 然后转成 html 的格式</li>
+<li>在 windows 系统中, 我们使用 &quot;&quot;, 但是在 html 中, 我们使用 &quot;/&quot;</li>
+<li>&quot;/&quot; 表示网站的根目录, &quot;./&quot; 表示该文件所在的目录</li>
 </ul>
 <h2>关于博客的结构</h2>
-<p>假设 / 是根目录</p>
 <ul>
-<li>/archive 是你放文章的地方，每个文章必须有自己的子文件夹</li>
-<li>/src 这里面放了一些 .css 文件，以后 .js 文件也会放在这里面</li>
-<li>/index.html 这个文件负责解析 url，并动态的加载对应的网页到该页面中进行显示</li>
-<li>除了主页和 404 使用 html 后缀，其他的文件都使用 txt 作为后缀</li>
+<li>/archive 是你放文章的地方, 每个文章必须有自己的子文件夹</li>
+<li>/src 这里面放了一些 .css 文件, 以后 .js 文件也会放在这里面</li>
+<li>/index.html 这个文件负责解析 url, 并动态的加载对应的网页到该页面中进行显示</li>
+<li>除了主页和 404 使用 html 后缀, 其他的文件都使用 txt 作为后缀</li>
 </ul>
 <h2>怎么写一篇新的文章</h2>
-<p>首先我们需要在 /archive 这里创建一个文件夹<br />
-我推荐的格式是，全小写，使用 <code>-</code> 替换空格</p>
-<p>然后进入我们刚刚创建的文件夹，新建一个 index.md 文件</p>
-<p>文章可以按照 markdown 标准 + fenced_code 扩展来进行编写</p>
-<p>我使用的 editor 是 vscode + markdownlint</p>
-<p><strong>Note:</strong></p>
+<p>首先我们需要在 /archive 这里创建一个文件夹</p>
+<p>我推荐的格式是, 全小写, 使用 <code>-</code> 替换空格</p>
+<blockquote class="alerts alerts-note"><p> 不能有 <code>+</code> 或者其他会被 html 转译的字符</p>
+<p>以后可能会增加对这些字符的支持, 现在只能避免使用他们</p>
+</blockquote>
+<p>然后进入我们刚刚创建的文件夹, 新建一个 index.md 文件</p>
+<p>文章可以按照 commonmark 标准来进行编写</p>
+<p>我的环境是 vscode + markdownlint, 基本上在 vscode 中渲染的结果就是最终的样子</p>
+<blockquote class="alerts alerts-note"><p></p>
 <ul>
-<li>关于新文章的名字，必须叫 "index.md"，如果修改的话，请同时修改 generat-blog.py 脚本中的 <code>md_file_name</code></li>
-<li>插入文件时，如果使用的是相对路径，请一定要在文件的前面加上 ./</li>
-<li>可以在图片的方括号<code>[]</code>的末尾使用 <code>&lt;</code> <code>&gt;</code> <code>&gt;&lt;</code> 来控制漂浮位置</li>
+<li>关于新文章的名字, 必须叫 &quot;index.md&quot;, 如果修改的话, 请同时修改 /generat-blog.py 脚本中的 <code>md_file_name</code></li>
+<li>插入文件时, 如果使用的是相对路径, 请一定要在文件的前面加上 &quot;./&quot;</li>
+<li>关于 markdown 详细请看 <a href="/?blog-markdown-extensions">这篇文章</a></li>
 </ul>
+</blockquote>
 <h2>怎么生成博客</h2>
-<p>所有生成博客的步骤都融合到了 generat-blog.py 这个脚本里面，只需要运行它就好了</p>
-<p>这个脚本会读取 /archive 文件夹下面所有的 index.md 文件，判断，
-如果没有被转过 html，或者 index.md 被更新了，就会把它转成 html。
-最后会生成一个导航的 /archive/index.txt</p>
-<p>关于这些生成的文件怎么被使用的，就是 /404.html 和 /index.html 的工作了</p>
-<p><strong>Note:</strong></p>
+<p>所有生成博客的步骤都融合到了 /generat-blog.py 这个脚本里面, 只需要运行它就好了</p>
+<p>这个脚本会读取 /archive 文件夹下面所有的 index.md 文件, 判断如果没有被转过 html, 或者 index.md 被更新了, 就会把它转成 html</p>
+<p>最后会生成一个导航的 /archive/index.txt</p>
+<p>我为了方便, 还放了两个脚本 /generat-blog.bat 和 /generat-blog-force.bat, 一个是只生成被更新的文件, 一个是强制生成所有的文件</p>
+<p>关于这些生成的文件怎么被使用的, 就是 /404.html 和 /index.html 的工作了</p>
+<blockquote class="alerts alerts-note"><p></p>
 <ul>
-<li>这个脚本依赖于 markdown 这个库</li>
-<li>如果你在创建时想跳过某篇文章，只需要创建一个 .wip 文件在那个文件夹中即可</li>
+<li>我的 py 版本是 3.10.5</li>
+<li>这个脚本依赖于一些扩展库, 运行出错的话, 请自行手动安装</li>
 <li><code>-f</code> 参数会让该脚本强制重新生成所有 html 文件</li>
+<li>因为这个脚本我一直在改, 并没有一份稳定的文档, 所以更多关于该脚本的信息请直接阅读源代码</li>
 </ul>
+</blockquote>
+<h2>在本地进行测试</h2>
+<p>在本地测试非常的简单, 只需要运行 /start-local-webside-npm.bat</p>
+<p>这个脚本会在本地创建一个博客的服务器, 并且打开你的浏览器</p>
+<blockquote class="alerts alerts-note"><p> 默认的端口号是 4096, 可以根据自己的需要在脚本里进行修改</p>
+</blockquote>
 <h2>部署博客</h2>
 <p>只需要把这个仓库 push 到 github 上就好喽</p>
+<p>另外 gitlab 经过测试也是可以用的, 详细请看 <a href="/?move-this-blog-from-github-to-gitlab">这篇文章</a></p>
