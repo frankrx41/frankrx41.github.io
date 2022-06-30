@@ -52,7 +52,19 @@
                             })
                             pre_code_html.innerHTML = pre_code_text;
                             pre_html = pre_code_html.parentNode;
-                            pre_html.innerHTML = "<span class='code-header'>" + pre_code_html['result'].language + "</span>" + pre_html.innerHTML;
+                            pre_html.innerHTML = "<div class='code-header'>" + pre_code_html.className.split(' ').at(0).replace('language-', '') + '</div>' + pre_html.innerHTML;
+
+                            var btn = document.createElement("button");
+                            btn.innerHTML = "All";
+                            btn.classList.add('code-select-button');
+                            btn.onclick = function() {
+                                var range = document.createRange();
+                                var referenceNode = this.parentNode.nextSibling;
+                                range.selectNode(referenceNode);
+                                window.getSelection().removeAllRanges();
+                                window.getSelection().addRange(range);
+                            };
+                            pre_html.firstChild.appendChild(btn);
                         });
 
                     })
