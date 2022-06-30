@@ -1,17 +1,23 @@
-<h1>How to disable win+L to lock PC in windows 11</h1>
+<h1>How to disable <kbd>Win</kbd> + <kbd>L</kbd> to lock PC in windows 11</h1>
+<p>We know that after pressing <kbd>Win</kbd> + <kbd>L</kbd>, the system will lock the screen.</p>
+<p>However, this function is very tasteless at some point.</p>
+<p>We can use other third-party lock screen tools, or write one ourselves.</p>
+<p>And it takes up a shortcut key starting with <kbd>Win</kbd>, the most important thing is that this shortcut key cannot be modified, and even AHK's hook has no way to override it.</p>
+<p>Therefore, the only way to disable <kbd>Win</kbd> + <kbd>L</kbd> is to disable the lock screen function that comes with windows.</p>
+<h2>Step</h2>
 <ol>
 <li>
-<p>Open regedit and goto</p>
+<p>Open regedit and goto:</p>
 <pre><code class="language-reg">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon
 </code></pre>
 </li>
 <li>
-<p>Set 'DisableLockWorkstation' value to '2'</p>
+<p>Set 'DisableLockWorkstation' value to '2'.</p>
 <p><img src="/archive/disable-win-l-to-lock-pc-in-windows-11/Clip_20220630_093805.png" alt="DisableLockWorkstation" /></p>
 <blockquote class="alerts alerts-note"><p> 1: enbale 2: disable</p>
 </blockquote>
 </li>
 <li>
-<p>It should work immediately</p>
+<p><kbd>Win</kbd> + <kbd>L</kbd> should immediately stop working.</p>
 </li>
 </ol>

@@ -57,8 +57,10 @@
     > **Note**
     >
     > * 如果使用 force push 的话, 注意要再传一份 .gitlab-ci.yml 文件
-    > * gitlab 会默认保护主分支, 不允许 force push, 我们需要修改以下设置
+    > * gitlab 会默认保护主分支, 不允许 force push, 我们需要修改以下设置:
+    >
     >     进入 /settings/repository 页面, 找到 Protected branches 选项, 把 Allowed to force push 打开
+    >
     >     ![allow force push](./Clip_20220630_025850.png)
 
 1. 最后一步, 点击 <https://username.gitlab.io> 访问你的网站

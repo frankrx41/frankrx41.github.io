@@ -1,5 +1,7 @@
 # 关于这个博客使用的 markdown 和 css style
 
+这篇文章介绍这个博客所使用的 markdown 语法和表现的效果
+
 ## 标准的 markdown
 
 ### 标题

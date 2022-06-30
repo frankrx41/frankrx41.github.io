@@ -1,4 +1,5 @@
 <h1>关于这个博客使用的 markdown 和 css style</h1>
+<p>这篇文章介绍这个博客所使用的 markdown 语法和表现的效果</p>
 <h2>标准的 markdown</h2>
 <h3>标题</h3>
 <pre><code class="language-md">#### H4

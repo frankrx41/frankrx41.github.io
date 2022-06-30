@@ -59,10 +59,14 @@ only:
 <p>push 到 gitlab 的分支中</p>
 <blockquote class="alerts alerts-note"><p></p>
 <ul>
-<li>如果使用 force push 的话, 注意要再传一份 .gitlab-ci.yml 文件</li>
-<li>gitlab 会默认保护主分支, 不允许 force push, 我们需要修改以下设置
-进入 /settings/repository 页面, 找到 Protected branches 选项, 把 Allowed to force push 打开
-<img src="/archive/move-this-blog-from-github-to-gitlab/Clip_20220630_025850.png" alt="allow force push" /></li>
+<li>
+<p>如果使用 force push 的话, 注意要再传一份 .gitlab-ci.yml 文件</p>
+</li>
+<li>
+<p>gitlab 会默认保护主分支, 不允许 force push, 我们需要修改以下设置:</p>
+<p>进入 /settings/repository 页面, 找到 Protected branches 选项, 把 Allowed to force push 打开</p>
+<p><img src="/archive/move-this-blog-from-github-to-gitlab/Clip_20220630_025850.png" alt="allow force push" /></p>
+</li>
 </ul>
 </blockquote>
 </li>
