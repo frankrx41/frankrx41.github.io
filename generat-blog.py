@@ -24,7 +24,6 @@ from colorama import Style
 archives_path = os.path.join('./', 'archive')
 html_file_name          = 'index.txt'
 md_file_name            = 'index.md'
-todo_mark_file_name     = '.wip'
 
 stat_cov = 0
 stat_err = 0
@@ -75,11 +74,6 @@ def process_single_file(force_covert: bool, print_html: bool, blog_dir: os.path,
     stat_str += 1
     is_need_covert = force_covert
 
-    if os.path.exists(os.path.join(archive_full_path, todo_mark_file_name)):
-        print(f'{Fore.YELLOW}[WIP]:\tRemove {todo_mark_file_name} to continue {Style.RESET_ALL}')
-        stat_wip += 1
-        return ""
-
     if not os.path.exists(os.path.join(archive_full_path, md_file_name)):
         print(f'{Fore.YELLOW}[WIP]:\tFile {md_file_name} is miss {Style.RESET_ALL}')
         stat_wip += 1
@@ -92,12 +86,23 @@ def process_single_file(force_covert: bool, print_html: bool, blog_dir: os.path,
         elif os.path.getmtime(os.path.join(archive_full_path, html_file_name)) < os.path.getmtime(os.path.join(archive_full_path, md_file_name)):
                 is_need_covert = True
 
+    with open(os.path.join(archive_full_path, md_file_name), 'r', encoding='UTF-8') as f:
+        md_text = f.read()
+
+    md_firstline = md_text.split('\n', maxsplit=1)[0]
+    if md_firstline.lower() == 'todo':
+        print(f'{Fore.YELLOW}[WIP]:\tRemove "TODO" mark to continue {Style.RESET_ALL}')
+        stat_wip += 1
+        return ""
+
+    if md_firstline == '':
+        print(f'{Fore.YELLOW}[WIP]:\tMake first line be H1 mark to continue {Style.RESET_ALL}')
+        stat_wip += 1
+        return ""
+
     # Covert md to html
     if is_need_covert:
-        coverted_html = ""
-        with open(os.path.join(archive_full_path, md_file_name), 'r', encoding='UTF-8') as f:
-            text = f.read()
-            coverted_html = md.render(text)
+        coverted_html = md.render(md_text)
 
         # './' => '/{blog_dir}/'
         coverted_html = coverted_html.replace('src="./', 'src="/archive/' + blog_dir + "/")
@@ -133,7 +138,7 @@ def process_single_file(force_covert: bool, print_html: bool, blog_dir: os.path,
         stat_cov += 1
 
     print(f'[END]:\t')
-    return f'<li><a href="?{blog_dir}">{blog_dir}</a></li>\n'
+    return f'<li><a href="?{blog_dir}">{md_firstline[2:]}</a></li>\n'
 
 
 def process_archives(force_covert: bool, print_html: bool, save_to_file: bool):
