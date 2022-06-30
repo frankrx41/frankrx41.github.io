@@ -116,9 +116,9 @@ def process_single_file(force_covert: bool, print_html: bool, blog_dir: os.path,
             coverted_html = re.sub(f'<code>({key_name[0]})</code>', f'<kbd>{key_name[1]}</kbd>', coverted_html, flags=re.IGNORECASE)
 
         # tip note important
-        str_list = [    {0: '<blockquote>\n<p><strong>tip:*</strong></p>', 1: '<blockquote class="alerts-tip">'},
-                        {0: '<blockquote>\n<p><strong>note:*</strong></p>', 1: '<blockquote class="alerts-note">'},
-                        {0: '<blockquote>\n<p><strong>important:*</strong></p>', 1: '<blockquote class="alerts-important">'}]
+        str_list = [    {0: '<blockquote>\n<p><strong>tip:*</strong>', 1: '<blockquote class="alerts alerts-tip"><p>'},
+                        {0: '<blockquote>\n<p><strong>note:*</strong>', 1: '<blockquote class="alerts alerts-note"><p>'},
+                        {0: '<blockquote>\n<p><strong>important:*</strong>', 1: '<blockquote class="alerts alerts-important"><p>'}]
         for str_name in str_list:
             coverted_html = re.sub(str_name[0], str_name[1], coverted_html, flags=re.IGNORECASE)
 
