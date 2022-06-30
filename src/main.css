@@ -6,26 +6,13 @@
 
 :root {
   --theme-text: #ffffff;
+  --theme-text-a-background-color: #138bee;
 }
 
 body {
   background-color: #151515;
   font-family: "urw-din", sans-serif;
   color: var(--theme-text);
-}
-
-a {
-  color: #176eca;
-  cursor: pointer;
-}
-
-a:hover {
-  color: #2913ee;
-  text-decoration: none;
-}
-
-a:visited {
-  color: #446383;
 }
 
 header {
@@ -113,7 +100,6 @@ article h3 {
   font-size: 1.5rem;
 }
 
-
 article p code {
   color-scheme: dark;
   text-rendering: optimizeSpeed;
@@ -130,6 +116,23 @@ article p code {
   padding: .125rem .25rem;
   line-height: 1.67;
   width: fit-content;
+}
+
+article a {
+  color: var(--theme-text);
+}
+
+article a:visited,
+article a:link {
+  background-color: transparent;
+  text-decoration: underline;
+  text-decoration-color: var(--theme-text-a-background-color);
+}
+
+article a:hover,
+article a:active {
+  background-color: var(--theme-text-a-background-color);
+  text-decoration: none;
 }
 
 article kbd {
@@ -209,30 +212,34 @@ article blockquote p {
   margin-top: .5rem;
 }
 
+tag:before {
+  content: "🔖"
+}
+
 article blockquote p:nth-child(1) {
   display: inline;
 }
 
 article blockquote.alerts-tip:before {
-  content: "Tip: ";
+  content: "⚐ Tip: ";
 }
 
 article blockquote.alerts-note:before {
-  content: "Note: ";
+  content: "🕮 Note: ";
 }
 
 article blockquote.alerts-important:before {
-  content: "Important: ";
+  content: "⚠ Important: ";
 }
 
 article blockquote.alerts-tip {
-  background-color: #443f3f;
-  border-left: .5rem solid #5e5757;
+  background-color: #2e4933;
+  border-left: .5rem solid #406547;
 }
 
 article blockquote.alerts-note {
-  background-color: #425c8d;
-  border-left: .5rem solid #5375b3;
+  background-color: #1f303a;
+  border-left: .5rem solid #314b5b;
 }
 
 article blockquote.alerts-warning {
