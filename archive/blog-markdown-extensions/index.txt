@@ -14,11 +14,11 @@
 <h3>段落</h3>
 <pre><code class="language-md">这是一行文字, 这里有 `代码` *斜体* **粗体** ***粗斜体***
 末尾跟着两个空格会自动换行  
-虽然我不推荐使用它
+不过我不推荐使用它
 </code></pre>
 <p>这是一行文字, 这里有 <code>代码</code> <em>斜体</em> <strong>粗体</strong> <em><strong>粗斜体</strong></em>
 末尾跟着两个空格会自动换行<br />
-虽然我不推荐使用它</p>
+不过我不推荐使用它</p>
 <h3>块</h3>
 <pre><code class="language-md">&gt; 这是一个 block
 &gt;
@@ -208,23 +208,17 @@
 <pre><code class="language-md">`Ctrl` `Shift` `Win` `Esc` `A` `B` `C` `Up` `Down` `Left` `Right`
 </code></pre>
 <p><kbd>Ctrl</kbd> <kbd>⇧</kbd> <kbd>Win</kbd> <kbd>Esc</kbd> <kbd>A</kbd> <kbd>B</kbd> <kbd>C</kbd> <kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd></p>
-<!-- ### 增加代码高亮
-
-```c
-main()
+<h3>增加代码高亮</h3>
+<pre><code class="language-c">main()
 {
     return 0;
 }
-```
-
-```py
-hello = 'hello world'
+</code></pre>
+<pre><code class="language-py">hello = 'hello world'
 print(f'{hello}')
-```
-
-```js
-function(a)
+</code></pre>
+<pre><code class="language-js">function(a)
 {
-    return a => a+1;
+    return a =&gt; a+1;
 }
-``` -->
+</code></pre>

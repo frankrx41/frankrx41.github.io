@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="/src/normalize.css">
     <link rel="stylesheet" type="text/css" href="/src/main.css">
+    <link rel="stylesheet" href="/src/highlight/vs2015.min.css">
+    <script src="/src/highlight/highlight.min.js"></script>
 </head>
 
 <body>
@@ -39,6 +41,8 @@
                 if (response.ok) {
                     return response.text().then(text => {
                         article.innerHTML = text;
+                        const blocks = article.querySelectorAll('pre code');
+                        blocks.forEach(hljs.highlightElement);
                     })
                 }
                 else {
