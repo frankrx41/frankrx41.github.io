@@ -119,7 +119,7 @@ article p code {
 }
 
 article a {
-  color: var(--theme-text);
+  color: var(--theme-text-a-background-color);
 }
 
 article a:visited,
@@ -131,6 +131,7 @@ article a:link {
 
 article a:hover,
 article a:active {
+  color: var(--theme-text);
   background-color: var(--theme-text-a-background-color);
   text-decoration: none;
 }
@@ -197,6 +198,12 @@ article pre {
   border: 1px solid #ddd;
   padding: .5rem;
   overflow-y: auto;
+  line-height: 1.15;
+}
+
+article pre code {
+  padding: 0;
+  margin: 0;
   line-height: 1.15;
 }
 
