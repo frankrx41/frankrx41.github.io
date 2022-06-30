@@ -1,0 +1,32 @@
+<h1>How to add .gitignore in right menu</h1>
+<h2>In right menu</h2>
+<p>Because windows 8.1 system does not allow the direct creation of files starting with &quot;.&quot;, we need to console command to create it.</p>
+<p>First of all, we know that running the following command directly can create a .gitignore file and write &quot;*&quot; as the content to it.</p>
+<pre><code class="language-cmd">echo *&gt;.gitignore
+</code></pre>
+<p>So all we have to do is, add this line of command to the context menu.</p>
+<p>To do this, we follow the steps below:</p>
+<ol>
+<li>Open regedit, create a key in <code>HKEY_CLASSES_ROOT\Directory\Background\shell</code> and name it <code>gitcreateignore</code> or other name you like.</li>
+<li>Create a subkey under the key you just created, name it <code>command</code>.</li>
+<li>Set the (default) value to <code>cmd /c echo *&gt;.gitignore</code>
+<img src="/archive/add-gitignore-in-right-menu/Clip_20220622_042501.png" alt="regedit command" /></li>
+<li>Ok, let's do a test. Right click in any folder background, you should see the menu like:
+<img src="/archive/add-gitignore-in-right-menu/Clip_20220622_042552.png" alt="right menu" /></li>
+<li>Click it, then there should be a .gitignore file with the content * created in this folder.</li>
+</ol>
+<p>Here I also provide a way to put it into submenu.
+<img src="/archive/add-gitignore-in-right-menu/Clip_20220622_043009.png" alt="sub menu" />
+<img src="/archive/add-gitignore-in-right-menu/Clip_20220622_043052.png" alt="right menu" /></p>
+<h2>In new menu</h2>
+<p>In windows 11, we can directly create files starting with &quot;.&quot;</p>
+<ol>
+<li>Goto <code>HKEY_CLASSES_ROOT\.gitignore</code> and set the (default) value to <code>VSCode.gitignore</code>
+<img src="/archive/add-gitignore-in-right-menu/Clip_20220622_043408.png" alt="key .gitignore" /></li>
+<li>Create <code>ShellNew</code>
+FileName .gitignore
+<img src="/archive/add-gitignore-in-right-menu/Clip_20220622_044024.png" alt="key ShellNew" /></li>
+<li>Open C:\Windows\ShellNew, Create a new .gitignore file by your self.</li>
+<li>Right click any folder, select new menu, you should see like:
+<img src="/archive/add-gitignore-in-right-menu/Clip_20220622_044401.png" alt="right menu" /></li>
+</ol>
