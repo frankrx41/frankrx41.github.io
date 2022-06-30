@@ -1,0 +1,229 @@
+<h1>关于这个博客使用的 markdown 和 css style</h1>
+<h2>标准的 markdown</h2>
+<h3>标题</h3>
+<pre><code class="language-md">#### H4
+
+##### H5
+
+###### H6
+</code></pre>
+<h4>H4</h4>
+<h5>H5</h5>
+<h6>H6</h6>
+<h3>段落</h3>
+<pre><code class="language-md">这是一行文字, 这里有 `代码` *斜体* **粗体** ***粗斜体***
+末尾跟着两个空格会自动换行  
+虽然我不推荐使用它
+</code></pre>
+<p>这是一行文字, 这里有 <code>代码</code> <em>斜体</em> <strong>粗体</strong> <em><strong>粗斜体</strong></em>
+末尾跟着两个空格会自动换行<br />
+虽然我不推荐使用它</p>
+<h3>块</h3>
+<pre><code class="language-md">&gt; 这是一个 block
+&gt;
+&gt; 这是第二行
+&gt;&gt; 这是一个两层 block
+</code></pre>
+<blockquote>
+<p>这是一个 block</p>
+<p>这是第二行</p>
+<blockquote>
+<p>这是一个两层 block</p>
+</blockquote>
+</blockquote>
+<h3>列表</h3>
+<pre><code class="language-md">1. 1
+1. 2
+1. 3
+    1. 1.1
+    1. 1.2
+1. 4
+    * a
+    * b
+1. 5
+</code></pre>
+<ol>
+<li>1</li>
+<li>2</li>
+<li>3
+<ol>
+<li>1.1</li>
+<li>1.2</li>
+</ol>
+</li>
+<li>4
+<ul>
+<li>a</li>
+<li>b</li>
+</ul>
+</li>
+<li>5</li>
+</ol>
+<h3>连接</h3>
+<pre><code class="language-md">&lt;http://google.com&gt;
+
+[谷歌](http://google.com)
+</code></pre>
+<p><a href="http://google.com">http://google.com</a></p>
+<p><a href="http://google.com">谷歌</a></p>
+<h3>图片</h3>
+<pre><code class="language-md">![image](./Clip_20220630_061432.png)
+</code></pre>
+<p><img src="/archive/blog-markdown-extensions/Clip_20220630_061432.png" alt="image" /></p>
+<h2>Commonmark 的扩展</h2>
+<h3>段落可以使用删除线</h3>
+<pre><code class="language-md">在段落中可以使用 ~~删除线~~
+</code></pre>
+<p>在段落中可以使用 <s>删除线</s></p>
+<h3>允许使用表格</h3>
+<pre><code class="language-md">| head  | foo   | foo
+| -     | -     | -
+| 1     | 2     | 3
+| 2     | 2     | 3
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>head</th>
+<th>foo</th>
+<th>foo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<h3>块可以被正确放在 List 中</h3>
+<pre><code class="language-md">1. 块可以被正确放在 list 中
+
+    ```c
+    int foo;
+    ```
+
+    &gt; block
+    &gt;
+    &gt; line 2
+
+1. 2
+</code></pre>
+<ol>
+<li>
+<p>块可以被正确放在 list 中</p>
+<pre><code class="language-c">int foo;
+</code></pre>
+<blockquote>
+<p>block</p>
+<p>line 2</p>
+</blockquote>
+</li>
+<li>
+<p>2</p>
+</li>
+</ol>
+<h3>List 中有段落和没段落</h3>
+<pre><code class="language-md">1. 如果所有的 序号 都紧密相连, 那么在 li 的后面不会有 p
+2. 2
+3. 3
+</code></pre>
+<ol>
+<li>如果所有的 序号 都紧密相连, 那么在 li 的后面不会有 p</li>
+<li>2</li>
+<li>3</li>
+</ol>
+<pre><code class="language-md">1. 如果 list 之间有空格的话, 只要其中一行有空格, li 里面的文字会被解释成段
+2. 2
+
+3. 3
+</code></pre>
+<ol>
+<li>
+<p>如果 list 之间有空格的话, 只要其中一行有空格, li 里面的文字会被解释成段</p>
+</li>
+<li>
+<p>2</p>
+</li>
+<li>
+<p>3</p>
+</li>
+</ol>
+<h3>允许站内连接</h3>
+<pre><code class="language-md">[主页](/)
+</code></pre>
+<p><a href="/">主页</a></p>
+<h2>我的额外扩展</h2>
+<h3>增加 tip note important 框</h3>
+<pre><code class="language-md">&gt; **Tip**
+&gt;
+&gt; 这是一个 Tip
+</code></pre>
+<blockquote class="alerts alerts-tip"><p></p>
+<p>这是一个 Tip</p>
+</blockquote>
+<pre><code class="language-md">&gt; **Note**
+&gt;
+&gt; 这是一个 Note
+</code></pre>
+<blockquote class="alerts alerts-note"><p></p>
+<p>这是一个 Note</p>
+</blockquote>
+<pre><code class="language-md">&gt; **Important**
+&gt;
+&gt; 这是一个 Important
+</code></pre>
+<blockquote class="alerts alerts-important"><p></p>
+<p>这是一个 Important</p>
+</blockquote>
+<p>可以在后面不添加空行, 让他显示在一行中</p>
+<pre><code class="language-md">&gt; **Tip**
+&gt; 这是一个 Tip
+</code></pre>
+<blockquote class="alerts alerts-tip"><p>
+这是一个 Tip</p>
+</blockquote>
+<pre><code class="language-md">&gt; **Tip** 这是一个 Tip
+</code></pre>
+<blockquote class="alerts alerts-tip"><p> 这是一个 Tip</p>
+</blockquote>
+<h3>图片可以设置 float 位置</h3>
+<p>可以在图片的 [] 中加入 <code>&gt;</code> <code>&lt;</code> <code>&gt;&lt;</code> 来表示 左漂浮, 右漂浮 和 居中</p>
+<pre><code class="language-md">![&lt;](./Clip_20220630_061432.png)
+![&gt;](./Clip_20220630_061432.png)
+![&gt;&lt;](./Clip_20220630_061432.png)
+</code></pre>
+<p><img src="/archive/blog-markdown-extensions/Clip_20220630_061432.png" alt="&lt;" />
+<img src="/archive/blog-markdown-extensions/Clip_20220630_061432.png" alt="&gt;" />
+<img src="/archive/blog-markdown-extensions/Clip_20220630_061432.png" alt="&gt;&lt;" /></p>
+<h3>部分代码会被显示成 kbd</h3>
+<p>会自动把被 ` 引起来的一些字符翻译成按键, 比如</p>
+<pre><code class="language-md">`Ctrl` `Shift` `Win` `Esc` `A` `B` `C` `Up` `Down` `Left` `Right`
+</code></pre>
+<p><kbd>Ctrl</kbd> <kbd>⇧</kbd> <kbd>Win</kbd> <kbd>Esc</kbd> <kbd>A</kbd> <kbd>B</kbd> <kbd>C</kbd> <kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd></p>
+<!-- ### 增加代码高亮
+
+```c
+main()
+{
+    return 0;
+}
+```
+
+```py
+hello = 'hello world'
+print(f'{hello}')
+```
+
+```js
+function(a)
+{
+    return a => a+1;
+}
+``` -->
