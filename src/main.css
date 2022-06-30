@@ -136,6 +136,11 @@ article a:active {
   text-decoration: none;
 }
 
+article button{
+  margin-top: 0;
+  font-size: .65rem;
+}
+
 article kbd {
   background-color: #eeeeee;
   border-radius: 3px;
@@ -194,20 +199,13 @@ article img[alt$="><"] {
 }
 
 article pre {
-  --code-header-display: none;
   counter-reset: line;
-  /* counter-set: line 0; */
   background-color: #222222;
-  border: 1px solid #dddddd;
+  border: 1px solid #404040;
   padding: 0;
   margin-top: 1rem;
   overflow-y: auto;
   line-height: 1.15;
-}
-
-article pre:hover {
-  --code-header-display: block;
-  border: 1px solid #138bee;
 }
 
 article pre code {
@@ -220,7 +218,7 @@ article pre code .cl:after {
   counter-increment: line;
   content: counter(line);
   display: inline-block;
-  border-right: 1px solid #ddd;
+  border-right: 1px solid #dddddd;
   padding: 0 .5em 0 0;
   min-width: 1.5em;
   text-align: right;
@@ -229,11 +227,22 @@ article pre code .cl:after {
 }
 
 article pre .code-header {
-  display: var(--code-header-display);
-  /* display: block; */
-  padding: .05rem .2rem;
-  background-color: #10131d;
+  display: inline-block;
+  width: 100%;
+  padding: .2rem .2rem .2rem 1rem;
+  background-color: #404040;
   margin: 0;
+}
+
+article pre .code-header button {
+  float: right;
+  display: block;
+  font-size: .85rem;
+}
+
+article pre .code-header button.code-select-button:before {
+  content: "✂";
+  padding-right: .2rem;
 }
 
 article blockquote {
@@ -305,7 +314,7 @@ article li {
 
 footer {
   background-color: #272727;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   padding: .5rem 2rem;
   text-align: right;
 }
