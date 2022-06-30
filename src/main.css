@@ -9,19 +9,19 @@
 }
 
 body {
-  background-color: #101010;
+  background-color: #151515;
   font-family: "urw-din", sans-serif;
   color: var(--theme-text);
 }
 
 a {
-  color: #d0e1f3;
+  color: #176eca;
   cursor: pointer;
-  text-decoration: none;
 }
 
 a:hover {
-  color: #007bff;
+  color: #2913ee;
+  text-decoration: none;
 }
 
 a:visited {
@@ -74,32 +74,45 @@ nav ul li a:visited {
 }
 
 article {
-  margin: 1.5rem 2rem;
-  border-radius: .5rem;
+  padding: 1.5rem 2rem;
   text-rendering: optimizeLegibility;
   font-size: 100%;
   letter-spacing: .015rem;
   max-width: 800px;
+  background-color: #1e1e1e;
+  line-height: 1.67;
 }
 
 article * {
   margin: 1rem 0 0 0;
 }
 
-article h1,
-article h2 {
-  margin: 2.5rem 0 1rem 0;
+article h1 {
+  margin: 0 0 1rem 0;
+  font-weight: 500;
 }
+
+article h2 {
+  margin: 2rem 0 1rem 0;
+  font-weight: 700;
+}
+
 article h3,
 article h4,
 article h5,
 article h6 {
-  margin: 2rem 0 1rem 0;
+  margin: 1.5rem 0 1rem 0;
+  font-weight: 500;
 }
 
-article p {
-  line-height: 1.67;
+article h2 {
+  font-size: 2rem;
 }
+
+article h3 {
+  font-size: 1.5rem;
+}
+
 
 article p code {
   color-scheme: dark;
@@ -136,6 +149,7 @@ article kbd {
 article table {
   table-layout: fixed;
   max-width: 100%;
+  min-width: 50%;
   border-collapse: collapse;
   line-height: 1.67;
 }
@@ -179,6 +193,7 @@ article pre {
   border: 1px solid #ddd;
   padding: .5rem;
   overflow-y: auto;
+  line-height: 1.15;
 }
 
 article blockquote {
@@ -186,38 +201,47 @@ article blockquote {
   border-left: .5rem solid #ccc;
   padding: .5rem;
   font-weight: 400;
+  line-height: 1.15;
 }
 
-article blockquote>p {
-  margin-top: 0;
+article blockquote p {
+  margin-top: .5rem;
+}
+
+article blockquote p:nth-child(1) {
+  display: inline;
 }
 
 article blockquote.alerts-tip:before {
-  content: "Tip";
+  content: "Tip: ";
 }
 
 article blockquote.alerts-note:before {
-  content: "Note";
+  content: "Note: ";
 }
 
 article blockquote.alerts-important:before {
-  content: "Important";
+  content: "Important: ";
 }
 
 article blockquote.alerts-tip {
   background-color: #443f3f;
+  border-left: .5rem solid #5e5757;
 }
 
 article blockquote.alerts-note {
   background-color: #425c8d;
+  border-left: .5rem solid #5375b3;
 }
 
 article blockquote.alerts-warning {
   background-color: #8d6842;
+  border-left: .5rem solid #a97c4f;
 }
 
 article blockquote.alerts-important {
   background-color: #3f2525;
+  border-left: .5rem solid #603838;
 }
 
 article ol li {
@@ -232,6 +256,7 @@ article ul li {
 
 article li {
   margin: .5rem 0 0 2rem;
+  line-height: 1.15;
 }
 
 footer {
