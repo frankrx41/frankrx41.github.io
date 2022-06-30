@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="/src/normalize.css">
     <link rel="stylesheet" type="text/css" href="/src/main.css">
-    <link rel="stylesheet" href="/src/highlight/vs2015.min.css">
+    <link rel="stylesheet" type="text/css" href="/src/highlight/vs2015.min.css">
     <script src="/src/highlight/highlight.min.js"></script>
 </head>
 
@@ -51,6 +51,8 @@
                                 pre_code_text += '<span class="cl"></span>' + pre_code_line +'\n'
                             })
                             pre_code_html.innerHTML = pre_code_text;
+                            pre_html = pre_code_html.parentNode;
+                            pre_html.innerHTML = "<span class='code-header'>" + pre_code_html['result'].language + "</span>" + pre_html.innerHTML;
                         });
 
                     })

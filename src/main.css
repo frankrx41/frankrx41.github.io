@@ -194,20 +194,26 @@ article img[alt$="><"] {
 }
 
 article pre {
+  --code-header-display: none;
   counter-reset: line;
   /* counter-set: line 0; */
   background-color: #222222;
-  border: 1px solid #ddd;
-  padding: .5rem;
+  border: 1px solid #dddddd;
+  padding: 0;
+  margin-top: 1rem;
   overflow-y: auto;
   line-height: 1.15;
 }
 
+article pre:hover {
+  --code-header-display: block;
+  border: 1px solid #138bee;
+}
+
 article pre code {
-  padding: 0;
+  padding: .5rem;
   margin: 0;
   font-size: 0.8em;
-  line-height: 1.15;
 }
 
 article pre code .cl:after {
@@ -220,6 +226,14 @@ article pre code .cl:after {
   text-align: right;
   margin-right: .5em;
   color: #888888
+}
+
+article pre .code-header {
+  display: var(--code-header-display);
+  /* display: block; */
+  padding: .05rem .2rem;
+  background-color: #10131d;
+  margin: 0;
 }
 
 article blockquote {
