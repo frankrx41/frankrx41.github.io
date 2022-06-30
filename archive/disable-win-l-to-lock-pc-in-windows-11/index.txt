@@ -1,0 +1,17 @@
+<h1>How to disable win+L to lock PC in windows 11</h1>
+<ol>
+<li>
+<p>Open regedit and goto</p>
+<pre><code class="language-reg">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon
+</code></pre>
+</li>
+<li>
+<p>Set 'DisableLockWorkstation' value to '2'</p>
+<p><img src="/archive/disable-win-l-to-lock-pc-in-windows-11/Clip_20220630_093805.png" alt="DisableLockWorkstation" /></p>
+<blockquote class="alerts alerts-note"><p> 1: enbale 2: disable</p>
+</blockquote>
+</li>
+<li>
+<p>It should work immediately</p>
+</li>
+</ol>
