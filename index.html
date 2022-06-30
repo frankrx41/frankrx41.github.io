@@ -39,10 +39,20 @@
         fetch('/archive/' + load_page + 'index.txt')
             .then(response => {
                 if (response.ok) {
-                    return response.text().then(text => {
-                        article.innerHTML = text;
-                        const blocks = article.querySelectorAll('pre code');
-                        blocks.forEach(hljs.highlightElement);
+                    return response.text().then(response_text => {
+                        article.innerHTML = response_text;
+                        // highlight.js
+                        article.querySelectorAll('pre code').forEach(hljs.highlightElement);
+                        // add line number
+                        article.querySelectorAll('pre code').forEach((pre_code_html) => {
+                            pre_code_text = "";
+                            pre_code_html_split = pre_code_html.innerHTML.split("\n");
+                            pre_code_html_split.filter((x,i)=>i!=pre_code_html_split.length-1).forEach((pre_code_line, line) => {
+                                pre_code_text += '<span class="cl"></span>' + pre_code_line +'\n'
+                            })
+                            pre_code_html.innerHTML = pre_code_text;
+                        });
+
                     })
                 }
                 else {
