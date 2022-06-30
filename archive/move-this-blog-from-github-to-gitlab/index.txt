@@ -1,0 +1,81 @@
+<h1>怎么把这个博客同时部署到 gitlab 上</h1>
+<p>经过测试, 我发现这个博客的框架在 gitlab 上部署是完全可行的</p>
+<p>下面是我的 gitlab 的主页</p>
+<p><a href="https://frankrx41.gitlab.io/">https://frankrx41.gitlab.io/</a></p>
+<p>这里我简单的说明一下如何进行部署</p>
+<h2>首先你应该知道</h2>
+<ul>
+<li>
+<p>&quot;仓库&quot; 这个东西, 在 github 叫做 repository, gitlab 叫做 project</p>
+</li>
+<li>
+<p>github 会自动的给 <strong>和你用户名相同的仓库</strong> 创建一个静态网站, 不需要我们做额外的操作, 但是 gitlab 需要我们手动创建一个 pipeline 来进行部署</p>
+</li>
+<li>
+<p>pipeline 在这里, 只需要简单的理解成让静态网页可以被访问的步骤就可以了, 具体就是通过 .gitlab-ci.yml 这个文件来实现的</p>
+</li>
+</ul>
+<h2>在 gitlab 中需要做的步骤</h2>
+<ol>
+<li>
+<p>注册一个 gitlab 账户, 假设你的用户名叫做 &quot;username&quot;</p>
+</li>
+<li>
+<p>创建一个新的仓库, 并且这个仓库 <strong>推荐</strong> 被命名为 &quot;username.gitlab.io&quot;</p>
+</li>
+<li>
+<p>在项目里面创建一个 .gitlab-ci.yml 文件, 并且输入以下内容</p>
+<pre><code class="language-yml">pages:
+stage: deploy
+script:
+- mkdir .public
+- cp -r * .public
+- mv .public public
+artifacts:
+    paths:
+    - public
+only:
+- main
+</code></pre>
+<blockquote class="alerts alerts-tip"><p></p>
+<p>你可以使用 Lint 工具检查你的 yml 文件是否有错误
+<img src="/archive/move-this-blog-from-github-to-gitlab/Clip_20220630_024554.png" alt="Lint" /></p>
+</blockquote>
+</li>
+<li>
+<p>保存该文件并提交</p>
+</li>
+<li>
+<p>等待 pipeline 运行完毕, 确保 pipeline 成功</p>
+</li>
+</ol>
+<h2>把这个仓库 push 到 gitlab 中</h2>
+<ol>
+<li>
+<p>在远端仓库中增加 gitlab 仓库的地址
+<img src="/archive/move-this-blog-from-github-to-gitlab/Clip_20220630_025223.png" alt="add remote repositories" /></p>
+</li>
+<li>
+<p>push 到 gitlab 的分支中</p>
+<blockquote class="alerts alerts-note"><p></p>
+<ul>
+<li>如果使用 force push 的话, 注意要再传一份 .gitlab-ci.yml 文件</li>
+<li>gitlab 会默认保护主分支, 不允许 force push, 我们需要修改以下设置
+进入 /settings/repository 页面, 找到 Protected branches 选项, 把 Allowed to force push 打开
+<img src="/archive/move-this-blog-from-github-to-gitlab/Clip_20220630_025850.png" alt="allow force push" /></li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>最后一步, 点击 <a href="https://username.gitlab.io">https://username.gitlab.io</a> 访问你的网站</p>
+</li>
+</ol>
+<h2>参考</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=TWqh9MtT4Bg&amp;ab_channel=GitLab">https://www.youtube.com/watch?v=TWqh9MtT4Bg&amp;ab_channel=GitLab</a></li>
+<li><a href="https://docs.gitlab.com/ee/ci/yaml/#artifacts">https://docs.gitlab.com/ee/ci/yaml/#artifacts</a></li>
+<li><a href="https://time2hack.com/host-your-static-site-on-gitlab-pages/">https://time2hack.com/host-your-static-site-on-gitlab-pages/</a></li>
+<li><a href="https://docs.gitlab.com/ee/user/project/pages/getting_started/pages_from_scratch.html">https://docs.gitlab.com/ee/user/project/pages/getting_started/pages_from_scratch.html</a></li>
+<li><a href="https://getpublii.com/docs/host-static-website-gitlab-pages.html">https://getpublii.com/docs/host-static-website-gitlab-pages.html</a></li>
+<li><a href="https://stackoverflow.com/questions/28318599/git-push-error-pre-receive-hook-declined">https://stackoverflow.com/questions/28318599/git-push-error-pre-receive-hook-declined</a></li>
+</ul>
