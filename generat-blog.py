@@ -13,8 +13,10 @@ from distutils.file_util import write_file
 import sys
 import getopt
 import os
-from xmlrpc.client import boolean
 from markdown_it import MarkdownIt
+from pyquery import PyQuery
+import datetime
+
 md = MarkdownIt("commonmark").enable('table').enable('strikethrough')
 import re
 
@@ -60,7 +62,7 @@ def main(argv):
         write_html(os.path.join(archives_path, html_file_name), html_text)
     return
 
-
+# Return home page single archive html text
 def process_single_file(force_covert: bool, print_html: bool, blog_dir: os.path, save_to_file: bool):
     archive_full_path = os.path.join(archives_path, blog_dir)
 
@@ -80,22 +82,26 @@ def process_single_file(force_covert: bool, print_html: bool, blog_dir: os.path,
         return ""
 
     if is_need_covert == False:
+        # Not exist html file
         if not os.path.exists(os.path.join(archive_full_path, html_file_name)):
             is_need_covert = True
-        # no latest
+        # We update md file
         elif os.path.getmtime(os.path.join(archive_full_path, html_file_name)) < os.path.getmtime(os.path.join(archive_full_path, md_file_name)):
-                is_need_covert = True
+            is_need_covert = True
 
-    with open(os.path.join(archive_full_path, md_file_name), 'r', encoding='UTF-8') as f:
-        md_text = f.read()
+    md_text = ''
+    # Get md text
+    if is_need_covert:
+        with open(os.path.join(archive_full_path, md_file_name), 'r', encoding='UTF-8') as f:
+            md_text = f.read()
+        md_firstline = md_text.split('\n', maxsplit=1)[0]
+        # This md is wip
+        if md_firstline == '' or md_firstline[0] != '#':
+            print(f'{Fore.YELLOW}[WIP]:\tMake first line be H1 mark to continue {Style.RESET_ALL}')
+            stat_wip += 1
+            return ""
 
-    md_firstline = md_text.split('\n', maxsplit=1)[0]
-
-    if md_firstline == '' or md_firstline[0] != '#':
-        print(f'{Fore.YELLOW}[WIP]:\tMake first line be H1 mark to continue {Style.RESET_ALL}')
-        stat_wip += 1
-        return ""
-
+    coverted_html = ''
     # Covert md to html
     if is_need_covert:
         coverted_html = md.render(md_text)
@@ -132,18 +138,39 @@ def process_single_file(force_covert: bool, print_html: bool, blog_dir: os.path,
         print(f'{Fore.GREEN}[COV]:\t{html_file_name} {Style.RESET_ALL}')
         stat_cov_file_name.append(blog_dir)
         stat_cov += 1
+    else:
+        with open(os.path.join(archive_full_path, html_file_name), 'r', encoding='UTF-8') as f:
+            coverted_html = f.read()
 
     print(f'[END]:\t')
-    return f'<li><a href="?{blog_dir}">{md_firstline[2:]}</a></li>\n'
+
+    # To main page div
+    output_html = ''
+    pq = PyQuery(coverted_html)
+    output_html += f'<div class="archive-list" onClick="location.href=\'?{blog_dir}\'">'
+    output_html += f'<h1>{pq("h1").html()}</h1>'
+    output_html += f'<p>{pq("p").html()}</p>'
+
+    md_file_full_name_path = os.path.join(archive_full_path, md_file_name)
+    time_create = os.path.getctime(md_file_full_name_path)
+    time_modify = os.path.getmtime(md_file_full_name_path)
+    time_format = "%Y-%m-%d"
+    time_create_str = datetime.datetime.fromtimestamp(time_create).strftime(time_format)
+    time_modify_str = datetime.datetime.fromtimestamp(time_modify).strftime(time_format)
+    if time_create_str == time_modify_str:
+        time_modify_str = ''
+    output_html += f'<div class="archive-info">{len(coverted_html)} | {time_create_str} {time_modify_str}</div>'
+    output_html +='</div>\n'
+    return output_html
 
 
 def process_archives(force_covert: bool, print_html: bool, save_to_file: bool):
-    output_html = '<ul>\n'
+    output_html = ''
     for blog_dir in os.listdir(archives_path):
         if os.path.isdir(os.path.join(archives_path, blog_dir)):
            output_html += process_single_file(force_covert, print_html, blog_dir, save_to_file)
 
-    output_html += '</ul>'
+    output_html += ''
 
     
     return output_html

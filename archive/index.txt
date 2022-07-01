@@ -1,11 +1,9 @@
-<ul>
-<li><a href="?add-gitignore-in-right-menu">How to add .gitignore in right menu</a></li>
-<li><a href="?blog-markdown-extensions">关于这个博客使用的 markdown 和 css style</a></li>
-<li><a href="?disable-win-l-to-lock-pc-in-windows-11">How to disable win+L to lock PC in windows 11</a></li>
-<li><a href="?find-wifi-password-in-windows-11">How to find wifi password in windows 11</a></li>
-<li><a href="?how-to-build-this-blog">如何构建这个博客</a></li>
-<li><a href="?move-this-blog-from-github-to-gitlab">怎么把这个博客同时部署到 gitlab 上</a></li>
-<li><a href="?post-2022-06-22">2022-06-22</a></li>
-<li><a href="?post-2022-06-28">2022-06-28</a></li>
-<li><a href="?remove-app-in-open-with-list">How to remove app in open with list</a></li>
-</ul>
+<div class="archive-list" onClick="location.href='?add-gitignore-in-right-menu'"><h1>How to add .gitignore in right menu</h1><p>Because windows 8.1 system does not allow the direct creation of files starting with ".", we need a console command to create it.</p><div class="archive-info">2503 | 2022-06-22 2022-06-30</div></div>
+<div class="archive-list" onClick="location.href='?blog-markdown-extensions'"><h1>关于这个博客使用的 markdown 和 css style</h1><p>这篇文章介绍这个博客所使用的 markdown 语法和表现的效果</p><div class="archive-info">4601 | 2022-06-30 2022-07-01</div></div>
+<div class="archive-list" onClick="location.href='?disable-win-l-to-lock-pc-in-windows-11'"><h1>How to disable <kbd>Win</kbd> + <kbd>L</kbd> to lock PC in windows 11</h1><p>We know that after pressing <kbd>Win</kbd> + <kbd>L</kbd>, the system will lock the screen.</p><div class="archive-info">1174 | 2022-06-29 2022-06-30</div></div>
+<div class="archive-list" onClick="location.href='?find-wifi-password-in-windows-11'"><h1>How to find wifi password in windows 11</h1><p>Open control panel.</p><div class="archive-info">1152 | 2022-06-28 2022-06-30</div></div>
+<div class="archive-list" onClick="location.href='?how-to-build-this-blog'"><h1>如何构建这个博客</h1><p>我很高兴你对我的博客感兴趣, 并且想知道它是如何构建的</p><div class="archive-info">2142 | 2022-06-28 2022-06-30</div></div>
+<div class="archive-list" onClick="location.href='?move-this-blog-from-github-to-gitlab'"><h1>怎么把这个博客同时部署到 gitlab 上</h1><p>经过测试, 我发现这个博客的框架在 gitlab 上部署是完全可行的</p><div class="archive-info">2934 | 2022-06-30 </div></div>
+<div class="archive-list" onClick="location.href='?post-2022-06-22'"><h1>2022-06-22</h1><p>最近辞职了，可以好好的在家里休养</p><div class="archive-info">428 | 2022-06-22 2022-06-28</div></div>
+<div class="archive-list" onClick="location.href='?post-2022-06-28'"><h1>2022-06-28</h1><p>博客的基本框架搭起来了, 之后我要做的就是把以前写的博客一个一个搬运过来</p><div class="archive-info">430 | 2022-06-28 2022-06-30</div></div>
+<div class="archive-list" onClick="location.href='?remove-app-in-open-with-list'"><h1>How to remove app in open with list</h1><p>We all know that there are many different file types in the computer, and each file has its own program to open it.</p><div class="archive-info">4017 | 2022-06-22 2022-06-28</div></div>
