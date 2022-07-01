@@ -310,7 +310,7 @@ article pre .code-header button {
 }
 
 article pre .code-header button.code-select-button:before {
-  content: "🗋";
+  content: "❐";
   padding-right: .2rem;
 }
 
