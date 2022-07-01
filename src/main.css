@@ -60,6 +60,39 @@ nav ul li a:visited {
   color: #8f8f72;
 }
 
+.img-background-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 0;
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #000000;
+  background-color: rgba(0,0,0,.85); /* Black w/ opacity */
+}
+
+.img-background-modal .img-center-modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+}
+
+.img-background-modal .img-center-modal img {
+  margin: auto;
+  display: block;
+  max-width: 100%;
+}
+
+.img-background-modal .img-center-modal p.caption {
+  margin-top: 1rem;
+  text-align: center;
+}
+
 article div.archive-list {
   background-color: #222222;
   border: 1px solid #404040;
@@ -210,6 +243,11 @@ article img {
   display: block;
   margin: 0;
   padding: .5rem 0;
+  cursor: pointer;
+}
+
+article img:hover {
+  opacity: 0.7;
 }
 
 article img[alt$=">"] {

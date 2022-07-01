@@ -14,7 +14,9 @@
 <body>
     <header>
         <h1>Frankrx41's blog</h1>
-        <p><nobr>Technology and Art</nobr></p>
+        <p>
+            <nobr>Technology and Art</nobr>
+        </p>
     </header>
 
     <nav>
@@ -23,6 +25,13 @@
             <!-- <li><a href="">Contact</a></li> -->
         </ul>
     </nav>
+
+    <div class="img-background-modal" onclick='this.style.display = "none";'>
+        <div class="img-center-modal">
+            <img onclick='event.stopPropagation();'>
+            <p class="caption" onclick='event.stopPropagation();'></p>
+        </div>
+    </div>
 
     <article>
         <p>Loading...</p>
@@ -47,8 +56,8 @@
                         article.querySelectorAll('pre code').forEach((pre_code_html) => {
                             pre_code_text = "";
                             pre_code_html_split = pre_code_html.innerHTML.split("\n");
-                            pre_code_html_split.filter((x,i)=>i!=pre_code_html_split.length-1).forEach((pre_code_line, line) => {
-                                pre_code_text += '<span class="cl"></span>' + pre_code_line +'\n'
+                            pre_code_html_split.filter((x, i) => i != pre_code_html_split.length - 1).forEach((pre_code_line, line) => {
+                                pre_code_text += '<span class="cl"></span>' + pre_code_line + '\n'
                             })
                             pre_code_html.innerHTML = pre_code_text;
                             pre_html = pre_code_html.parentNode;
@@ -57,15 +66,27 @@
                             var btn = document.createElement("button");
                             btn.innerHTML = "All";
                             btn.classList.add('code-select-button');
-                            btn.onclick = function() {
+                            btn.onclick = (() => {
                                 var range = document.createRange();
                                 var referenceNode = this.parentNode.nextSibling;
                                 range.selectNode(referenceNode);
                                 window.getSelection().removeAllRanges();
                                 window.getSelection().addRange(range);
-                            };
+                            });
                             pre_html.firstChild.appendChild(btn);
                         });
+                        // Click img
+                        var img_background_modal = document.getElementsByClassName('img-background-modal')[0];
+                        var modal_img = img_background_modal.getElementsByTagName('img')[0];
+                        var modal_p = img_background_modal.getElementsByTagName('p')[0];
+                        article.querySelectorAll('img').forEach(img => {
+                            img.onclick = (() => {
+                                img_background_modal.style.display = "block";
+                                modal_img.src = img.src;
+                                modal_p.innerHTML = img.alt;
+                            }).bind(this)
+                        }
+                        )
 
                     })
                 }
@@ -73,7 +94,6 @@
                     article.innerHTML = `<p><b>404:</b> Page <i>${load_page.slice(0, -1)}</i> not exist!</p>`;
                 }
             })
-
     </script>
 
     <footer><i>frankrx41 2022</i></footer>
