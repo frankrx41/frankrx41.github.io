@@ -122,12 +122,17 @@ def process_single_file(force_covert: bool, print_html: bool, blog_dir: os.path,
         for key_name in key_list:
             coverted_html = re.sub(f'<code>({key_name[0]})</code>', f'<kbd>{key_name[1]}</kbd>', coverted_html, flags=re.IGNORECASE)
 
-        # tip note important
-        str_list = [    {0: '<blockquote>\n<p><strong>tip:*</strong>', 1: '<blockquote class="alerts alerts-tip"><p>'},
-                        {0: '<blockquote>\n<p><strong>note:*</strong>', 1: '<blockquote class="alerts alerts-note"><p>'},
-                        {0: '<blockquote>\n<p><strong>important:*</strong>', 1: '<blockquote class="alerts alerts-important"><p>'}]
+        # Alerts tip note important
+        str_list = [    {0: '<blockquote>\n<p><strong>tip:*</strong>', 1: '<blockquote class="alerts alerts-tip"> '},
+                        {0: '<blockquote>\n<p><strong>note:*</strong>', 1: '<blockquote class="alerts alerts-note"> '},
+                        {0: '<blockquote>\n<p><strong>important:*</strong>', 1: '<blockquote class="alerts alerts-important"> '}]
         for str_name in str_list:
             coverted_html = re.sub(str_name[0], str_name[1], coverted_html, flags=re.IGNORECASE)
+
+        # Checkbox
+        coverted_html = coverted_html.replace("[ ] ", '<input type="checkbox" />')
+        coverted_html = coverted_html.replace("[x] ", '<input type="checkbox" checked="checked" />')
+
 
         if print_html:
             print(coverted_html)

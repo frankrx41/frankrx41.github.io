@@ -200,9 +200,13 @@ article a:active {
   text-decoration: none;
 }
 
-article button{
+article button {
   margin-top: 0;
   font-size: .65rem;
+}
+
+article input[type=checkbox] {
+  margin: 0 .25rem 0 0;
 }
 
 article kbd {
