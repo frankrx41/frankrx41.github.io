@@ -339,7 +339,7 @@ article blockquote.alerts-tip:before {
 }
 
 article blockquote.alerts-note:before {
-  content: "🕮 Note: ";
+  content: "ⓘ Note: ";
 }
 
 article blockquote.alerts-important:before {
