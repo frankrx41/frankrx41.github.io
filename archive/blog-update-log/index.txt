@@ -1,0 +1,76 @@
+<h1>本博客的更新日志</h1>
+<p>说真的, 懒得写, 直接看 git 的 log 就好了</p>
+<p>而且反反复复改来改去的都是那几个文件</p>
+<p>所以我这里写一些 log 里面没有的东西</p>
+<h2>为什么使用 commonmark 替代标准的 markdown</h2>
+<p><strong>短答案:</strong> 因为 vscode 渲染所用的是 commonmark</p>
+<p><strong>长答案:</strong></p>
+<p>在早期我确实使用 markdown 来翻译 md 文件的, 但是很快我就发现, 标准的 markdown 竟然连代码块都不支持</p>
+<p>然后我加了个 fenced_code 的插件, 临时的修复了一下</p>
+<p>但是, 我又发现, 它连 table 也不支持</p>
+<p>嗯, 还是和之前一样, 我加了个 tables 的插件, 暂时看起来是好了</p>
+<p>但是又很快我发现, li 中加入 code block 它也都不支持</p>
+<p>然后我就开始, 和之前的一样, 继续找插件</p>
+<p>这次新找的插件, 会在生成的 <code>li</code> 周围加一圈的 <code>div</code>, 这是我不能忍受的</p>
+<p>继续换了几家插件, 还是没有遇到喜欢的</p>
+<p>之后, 我就开始思考, 在 vscode 中的 markdown 是支持的这些功能的</p>
+<p>所以, vscode 使用的渲染器是谁家的呢?</p>
+<p>结果就是, 用的是 commonmark</p>
+<p>这个是 <a href="https://markdown-it-py.readthedocs.io/en/latest/plugins.html">commonmark 的使用指南</a></p>
+<h2>本博客已经实现的机能和计划中的机能</h2>
+<ul>
+<li>
+<p><input type="checkbox" checked="checked" />本地预览博客</p>
+<p>现在用的是 npm 的 http-server</p>
+</li>
+<li>
+<p><input type="checkbox" checked="checked" />自动化生成博客流程</p>
+<p>现在使用的是一个自己写的 py 脚本</p>
+</li>
+<li>
+<p><input type="checkbox" />加入对博客渲染结果的自动化测试</p>
+</li>
+<li>
+<p><input type="checkbox" checked="checked" />主页的文章加入第一段的文本</p>
+</li>
+<li>
+<p><input type="checkbox" />加入标签, 并且可以按标签进行分类</p>
+</li>
+<li>
+<p><input type="checkbox" />加入搜索功能</p>
+</li>
+<li>
+<p><input type="checkbox" checked="checked" />图片可以单击放大</p>
+</li>
+<li>
+<p><input type="checkbox" checked="checked" />代码块可以显示行号</p>
+</li>
+<li>
+<p><input type="checkbox" checked="checked" />代码会进行语法高亮</p>
+<p>现在使用的是 highlight.js, 还有些 bug, 比如 cmd reg 格式的不会被高亮</p>
+</li>
+<li>
+<p><input type="checkbox" checked="checked" />可以快速选择代码块</p>
+</li>
+<li>
+<p><input type="checkbox" /><code>H2</code> <code>H3</code> 段加入 link</p>
+</li>
+<li>
+<p><input type="checkbox" />美化 footer</p>
+</li>
+<li>
+<p><input type="checkbox" />生成文章结构目录</p>
+</li>
+<li>
+<p><input type="checkbox" />加入响应式的 css</p>
+</li>
+<li>
+<p><input type="checkbox" />加入 light dark 主题的切换</p>
+</li>
+<li>
+<p><input type="checkbox" />加入更多的选项</p>
+</li>
+<li>
+<p><input type="checkbox" />一个秘密内容的更新</p>
+</li>
+</ul>
