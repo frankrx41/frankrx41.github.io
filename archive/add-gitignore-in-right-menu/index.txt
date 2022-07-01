@@ -1,7 +1,13 @@
-<h1>How to add .gitignore in right menu</h1>
-<h2>In right menu</h2>
-<p>Because windows 8.1 system does not allow the direct creation of files starting with &quot;.&quot;, we need a console command to create it.</p>
-<p>First of all, we know that running the following command directly can create a .gitignore file and write &quot;*&quot; as the content to it.</p>
+<h1>How to quick create .gitignore in right menu</h1>
+<p>This article describes how to add a quick way to create a .gitignore file in the folder right-click menu.</p>
+<p>We have two ways to create it, one is to add a new menu in the folder right-click menu, make it to create a .gitignore file immediately after being clicked.</p>
+<p><img src="/archive/add-gitignore-in-right-menu/clip_20220702_014510.png" alt="create-.gitignore-file-in-right-menu" /></p>
+<p>The second way is to add the .gitignore file to the folder's New menu.</p>
+<p><img src="/archive/add-gitignore-in-right-menu/clip_20220702_012737.png" alt="create-.gitignore-file-in-new-menu" /></p>
+<h2>Add a command to create .gitignore in right menu</h2>
+<blockquote class="alerts alerts-note"><p> windows 8.1 system does not allow the direct creation of files starting with &quot;.&quot;, this OS can only use this way.</p>
+</blockquote>
+<p>First of all, we know that running the following command directly can create a .gitignore file this current folder and write &quot;*&quot; as the content to it.</p>
 <pre><code class="language-cmd">echo *&gt;.gitignore
 </code></pre>
 <p>So all we have to do is, add this line of command to the context menu.</p>
@@ -17,39 +23,46 @@
 <p>Create a subkey under the key you just created, name it <code>command</code>.</p>
 </li>
 <li>
-<p>Set the (default) value to <code>cmd /c echo *&gt;.gitignore</code>.</p>
-<p><img src="/archive/add-gitignore-in-right-menu/Clip_20220622_042501.png" alt="regedit command" /></p>
+<p>Set the (default) value to:</p>
+<pre><code class="language-cmd">cmd /c echo *&gt;.gitignore
+</code></pre>
+<p><img src="/archive/add-gitignore-in-right-menu/clip_20220702_014427.png" alt="regedit command" /></p>
 </li>
 <li>
 <p>Ok, let's do a test. Right click in any folder background, you should see the menu like:</p>
-<p><img src="/archive/add-gitignore-in-right-menu/Clip_20220622_042552.png" alt="right menu" /></p>
+<p><img src="/archive/add-gitignore-in-right-menu/clip_20220702_014510.png" alt="right menu" /></p>
 </li>
 <li>
 <p>Click it, then there should be a .gitignore file with the content * created in this folder.</p>
 </li>
 </ol>
-<p>Here I also provide a way to put it into submenu.</p>
-<p><img src="/archive/add-gitignore-in-right-menu/Clip_20220622_043009.png" alt="sub menu" /></p>
-<p><img src="/archive/add-gitignore-in-right-menu/Clip_20220622_043052.png" alt="right menu" /></p>
-<h2>In new menu</h2>
-<p>In windows 11, we can directly create files starting with &quot;.&quot;</p>
+<!-- Here I also provide a way to put it into submenu.
+
+![sub menu](./clip_20220622_043009.png)
+
+![right menu](./clip_20220622_043052.png) -->
+<h2>Add .gitignore type file in folder new menu</h2>
+<blockquote class="alerts alerts-note"><p> I used the environment registered in the registry after vscode installation.</p>
+</blockquote>
 <ol>
 <li>
 <p>Goto <code>HKEY_CLASSES_ROOT\.gitignore</code> and set the (default) value to <code>VSCode.gitignore</code>.</p>
-<p><img src="/archive/add-gitignore-in-right-menu/Clip_20220622_043408.png" alt="key .gitignore" /></p>
+<p><img src="/archive/add-gitignore-in-right-menu/clip_20220702_013943.png" alt="key .gitignore" /></p>
 </li>
 <li>
 <p>Create a <code>ShellNew</code> key.</p>
 </li>
 <li>
-<p>Create a <code>FileName</code> string value, and set it to <code>.gitignore</code>.</p>
-<p><img src="/archive/add-gitignore-in-right-menu/Clip_20220622_044024.png" alt="key ShellNew" /></p>
+<p>Create a <code>FileName</code> string value, and set it to <code>..gitignore</code>.</p>
+<p><img src="/archive/add-gitignore-in-right-menu/clip_20220702_013909.png" alt="key ShellNew" /></p>
 </li>
 <li>
-<p>Open C:\Windows\ShellNew, Create a new .gitignore file by your self.</p>
+<p>Open C:\Windows\ShellNew, Create a new &quot;..gitignore&quot; file by your self.</p>
+<p>And you can also add any content in it, like '*', or '#' etc.</p>
 </li>
 <li>
 <p>Right click any folder, select new menu, you should see like:</p>
-<p><img src="/archive/add-gitignore-in-right-menu/Clip_20220622_044401.png" alt="right menu" /></p>
+<p><img src="/archive/add-gitignore-in-right-menu/clip_20220702_012737.png" alt="right menu" /></p>
+<p>Click it, OS will create a &quot;New Git Ignore Source File.gitignore&quot; file, and the content of the file should be the same as C:\Windows\ShellNew\..gitignore.</p>
 </li>
 </ol>
