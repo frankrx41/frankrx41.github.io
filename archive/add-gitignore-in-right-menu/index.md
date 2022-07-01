@@ -40,11 +40,11 @@ To do this, we follow the steps below:
     cmd /c echo *>.gitignore
     ```
 
-    ![regedit command](./clip_20220702_014427.png)
+    ![regedit-gitcreateignore-command](./clip_20220702_014427.png)
 
 1. Ok, let's do a test. Right click in any folder background, you should see the menu like:
 
-    ![right menu](./clip_20220702_014510.png)
+    ![gitcreateignore-folder-right-menu](./clip_20220702_014510.png)
 
 1. Click it, then there should be a .gitignore file with the content * created in this folder.
 
@@ -60,13 +60,13 @@ To do this, we follow the steps below:
 
 1. Goto `HKEY_CLASSES_ROOT\.gitignore` and set the (default) value to `VSCode.gitignore`.
 
-    ![key .gitignore](./clip_20220702_013943.png)
+    ![regedit-.gitignore-default](./clip_20220702_013943.png)
 
 1. Create a `ShellNew` key.
 
 1. Create a `FileName` string value, and set it to `..gitignore`.
 
-    ![key ShellNew](./clip_20220702_013909.png)
+    ![regedit-.gitignore-shellnew](./clip_20220702_013909.png)
 
 1. Open C:\\Windows\\ShellNew, Create a new "..gitignore" file by your self.
 
@@ -74,6 +74,6 @@ To do this, we follow the steps below:
 
 1. Right click any folder, select new menu, you should see like:
 
-    ![right menu](./clip_20220702_012737.png)
+    ![shell-new-folder-right-menu](./clip_20220702_012737.png)
 
     Click it, OS will create a "New Git Ignore Source File.gitignore" file, and the content of the file should be the same as C:\\Windows\\ShellNew\\..gitignore.

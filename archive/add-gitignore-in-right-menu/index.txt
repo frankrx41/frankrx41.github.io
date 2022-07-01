@@ -26,11 +26,11 @@
 <p>Set the (default) value to:</p>
 <pre><code class="language-cmd">cmd /c echo *&gt;.gitignore
 </code></pre>
-<p><img src="/archive/add-gitignore-in-right-menu/clip_20220702_014427.png" alt="regedit command" /></p>
+<p><img src="/archive/add-gitignore-in-right-menu/clip_20220702_014427.png" alt="regedit-gitcreateignore-command" /></p>
 </li>
 <li>
 <p>Ok, let's do a test. Right click in any folder background, you should see the menu like:</p>
-<p><img src="/archive/add-gitignore-in-right-menu/clip_20220702_014510.png" alt="right menu" /></p>
+<p><img src="/archive/add-gitignore-in-right-menu/clip_20220702_014510.png" alt="gitcreateignore-folder-right-menu" /></p>
 </li>
 <li>
 <p>Click it, then there should be a .gitignore file with the content * created in this folder.</p>
@@ -47,14 +47,14 @@
 <ol>
 <li>
 <p>Goto <code>HKEY_CLASSES_ROOT\.gitignore</code> and set the (default) value to <code>VSCode.gitignore</code>.</p>
-<p><img src="/archive/add-gitignore-in-right-menu/clip_20220702_013943.png" alt="key .gitignore" /></p>
+<p><img src="/archive/add-gitignore-in-right-menu/clip_20220702_013943.png" alt="regedit-.gitignore-default" /></p>
 </li>
 <li>
 <p>Create a <code>ShellNew</code> key.</p>
 </li>
 <li>
 <p>Create a <code>FileName</code> string value, and set it to <code>..gitignore</code>.</p>
-<p><img src="/archive/add-gitignore-in-right-menu/clip_20220702_013909.png" alt="key ShellNew" /></p>
+<p><img src="/archive/add-gitignore-in-right-menu/clip_20220702_013909.png" alt="regedit-.gitignore-shellnew" /></p>
 </li>
 <li>
 <p>Open C:\Windows\ShellNew, Create a new &quot;..gitignore&quot; file by your self.</p>
@@ -62,7 +62,7 @@
 </li>
 <li>
 <p>Right click any folder, select new menu, you should see like:</p>
-<p><img src="/archive/add-gitignore-in-right-menu/clip_20220702_012737.png" alt="right menu" /></p>
+<p><img src="/archive/add-gitignore-in-right-menu/clip_20220702_012737.png" alt="shell-new-folder-right-menu" /></p>
 <p>Click it, OS will create a &quot;New Git Ignore Source File.gitignore&quot; file, and the content of the file should be the same as C:\Windows\ShellNew\..gitignore.</p>
 </li>
 </ol>
