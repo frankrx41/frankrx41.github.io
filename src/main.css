@@ -291,7 +291,8 @@ article pre code .cl:after {
   min-width: 1.5em;
   text-align: right;
   margin-right: .5em;
-  color: #888888
+  color: #888888;
+  font-style: normal;
 }
 
 article pre .code-header {

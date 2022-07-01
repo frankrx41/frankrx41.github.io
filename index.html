@@ -68,7 +68,7 @@
                             btn.classList.add('code-select-button');
                             btn.onclick = (() => {
                                 var range = document.createRange();
-                                var referenceNode = this.parentNode.nextSibling;
+                                var referenceNode = btn.parentNode.nextSibling;
                                 range.selectNode(referenceNode);
                                 window.getSelection().removeAllRanges();
                                 window.getSelection().addRange(range);
