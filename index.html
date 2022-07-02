@@ -53,13 +53,16 @@
                         // highlight.js
                         article.querySelectorAll('pre code').forEach(hljs.highlightElement);
                         // add line number
-                        article.querySelectorAll('pre code').forEach((pre_code_html) => {
+                        article.querySelectorAll('pre code').forEach(pre_code_html => {
                             pre_code_text = "";
                             pre_code_html_split = pre_code_html.innerHTML.split("\n");
-                            pre_code_html_split.filter((x, i) => i != pre_code_html_split.length - 1).forEach((pre_code_line, line) => {
-                                pre_code_text += '<span class="cl"></span>' + pre_code_line + '\n'
-                            })
-                            pre_code_html.innerHTML = pre_code_text;
+                            if( pre_code_html_split.length > 2 )
+                            {
+                                pre_code_html_split.filter((x, i) => i != pre_code_html_split.length - 1).forEach((pre_code_line, line) => {
+                                    pre_code_text += '<span class="cl"></span>' + pre_code_line + '\n'
+                                })
+                                pre_code_html.innerHTML = pre_code_text;
+                            }
                             pre_html = pre_code_html.parentNode;
                             pre_html.innerHTML = "<div class='code-header'>" + pre_code_html.className.split(' ').at(0).replace('language-', '') + '</div>' + pre_html.innerHTML;
 
