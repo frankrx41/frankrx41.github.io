@@ -280,6 +280,7 @@ article img[alt$="><"] {
 
 article pre {
   counter-reset: line;
+  counter-set: line 0;
   background-color: #222222;
   border: 1px solid #404040;
   line-height: 1.15;
@@ -297,13 +298,13 @@ article pre code .cl:after {
   counter-increment: line;
   content: counter(line);
   display: inline-block;
-  border-right: 1px solid #dddddd;
-  padding: 0 .5em 0 0;
-  min-width: 1.5em;
-  text-align: right;
-  margin-right: .5em;
-  color: #888888;
+  padding: 0 .25em 0 0;
+  min-width: 1.75em;
+  margin: 0 .5em 0 -.25rem;
   font-style: normal;
+  color: #888888;
+  text-align: right;
+  border-right: 1px solid #dddddd;
 }
 
 article pre .code-header {
