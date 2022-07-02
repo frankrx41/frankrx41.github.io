@@ -37,7 +37,8 @@ artifacts:
 only:
 - main
 </code></pre>
-<blockquote class="alerts alerts-tip"><p></p>
+<blockquote class="alerts alerts-tip">
+<p></p>
 <p>你可以使用 Lint 工具检查你的 yml 文件是否有错误
 <img src="/archive/move-this-blog-from-github-to-gitlab/Clip_20220630_024554.png" alt="Lint" /></p>
 </blockquote>
@@ -57,7 +58,8 @@ only:
 </li>
 <li>
 <p>push 到 gitlab 的分支中</p>
-<blockquote class="alerts alerts-note"><p></p>
+<blockquote class="alerts alerts-note">
+<p></p>
 <ul>
 <li>
 <p>如果使用 force push 的话, 注意要再传一份 .gitlab-ci.yml 文件</p>

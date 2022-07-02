@@ -20,7 +20,8 @@
 <p><img src="/archive/find-wifi-password-in-windows-11/Clip_20220628_151947.png" alt="Security" /></p>
 </li>
 </ol>
-<blockquote class="alerts alerts-tip"><p></p>
+<blockquote class="alerts alerts-tip">
+<p></p>
 <p>You can open control panel by type &quot;control&quot; in start &gt; menu
 <img src="/archive/find-wifi-password-in-windows-11/Clip_20220628_224137.png" alt="start menu" />
 or in Run window

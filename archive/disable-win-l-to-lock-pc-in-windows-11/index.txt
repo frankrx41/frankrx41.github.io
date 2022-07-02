@@ -14,7 +14,8 @@
 <li>
 <p>Set 'DisableLockWorkstation' value to '2'.</p>
 <p><img src="/archive/disable-win-l-to-lock-pc-in-windows-11/Clip_20220630_093805.png" alt="DisableLockWorkstation" /></p>
-<blockquote class="alerts alerts-note"><p> 1: enbale 2: disable</p>
+<blockquote class="alerts alerts-note">
+<p> 1: enbale 2: disable</p>
 </blockquote>
 </li>
 <li>

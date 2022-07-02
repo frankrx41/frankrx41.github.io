@@ -17,13 +17,15 @@
 <h2>怎么写一篇新的文章</h2>
 <p>首先我们需要在 /archive 这里创建一个文件夹</p>
 <p>我推荐的格式是, 全小写, 使用 <code>-</code> 替换空格</p>
-<blockquote class="alerts alerts-note"><p> 不能有 <code>+</code> 或者其他会被 html 转译的字符</p>
+<blockquote class="alerts alerts-note">
+<p> 不能有 <code>+</code> 或者其他会被 html 转译的字符</p>
 <p>以后可能会增加对这些字符的支持, 现在只能避免使用他们</p>
 </blockquote>
 <p>然后进入我们刚刚创建的文件夹, 新建一个 index.md 文件</p>
 <p>文章可以按照 commonmark 标准来进行编写</p>
 <p>我的环境是 vscode + markdownlint, 基本上在 vscode 中渲染的结果就是最终的样子</p>
-<blockquote class="alerts alerts-note"><p></p>
+<blockquote class="alerts alerts-note">
+<p></p>
 <ul>
 <li>关于新文章的名字, 必须叫 &quot;index.md&quot;, 如果修改的话, 请同时修改 /generat-blog.py 脚本中的 <code>md_file_name</code></li>
 <li>插入文件时, 如果使用的是相对路径, 请一定要在文件的前面加上 &quot;./&quot;</li>
@@ -36,7 +38,8 @@
 <p>最后会生成一个导航的 /archive/index.txt</p>
 <p>我为了方便, 还放了两个脚本 /generat-blog.bat 和 /generat-blog-force.bat, 一个是只生成被更新的文件, 一个是强制生成所有的文件</p>
 <p>关于这些生成的文件怎么被使用的, 就是 /404.html 和 /index.html 的工作了</p>
-<blockquote class="alerts alerts-note"><p></p>
+<blockquote class="alerts alerts-note">
+<p></p>
 <ul>
 <li>我的 py 版本是 3.10.5</li>
 <li>这个脚本依赖于一些扩展库, 运行出错的话, 请自行手动安装</li>
@@ -47,7 +50,8 @@
 <h2>在本地进行测试</h2>
 <p>在本地测试非常的简单, 只需要运行 /start-local-webside-npm.bat</p>
 <p>这个脚本会在本地创建一个博客的服务器, 并且打开你的浏览器</p>
-<blockquote class="alerts alerts-note"><p> 默认的端口号是 4096, 可以根据自己的需要在脚本里进行修改</p>
+<blockquote class="alerts alerts-note">
+<p> 默认的端口号是 4096, 可以根据自己的需要在脚本里进行修改</p>
 </blockquote>
 <h2>部署博客</h2>
 <p>只需要把这个仓库 push 到 github 上就好喽</p>

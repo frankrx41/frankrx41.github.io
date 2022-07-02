@@ -5,7 +5,8 @@
 <p>The second way is to add the .gitignore file to the folder's New menu.</p>
 <p><img src="/archive/add-gitignore-in-right-menu/clip_20220702_012737.png" alt="create-.gitignore-file-in-new-menu" /></p>
 <h2>Add a command to create .gitignore in right menu</h2>
-<blockquote class="alerts alerts-note"><p> windows 8.1 system does not allow the direct creation of files starting with &quot;.&quot;, this OS can only use this way.</p>
+<blockquote class="alerts alerts-note">
+<p> windows 8.1 system does not allow the direct creation of files starting with &quot;.&quot;, this OS can only use this way.</p>
 </blockquote>
 <p>First of all, we know that running the following command directly can create a .gitignore file this current folder and write &quot;*&quot; as the content to it.</p>
 <pre><code class="language-cmd">echo *&gt;.gitignore
@@ -42,7 +43,8 @@
 
 ![right menu](./clip_20220622_043052.png) -->
 <h2>Add .gitignore type file in folder new menu</h2>
-<blockquote class="alerts alerts-note"><p> I used the environment registered in the registry after vscode installation.</p>
+<blockquote class="alerts alerts-note">
+<p> I used the environment registered in the registry after vscode installation.</p>
 </blockquote>
 <ol>
 <li>
