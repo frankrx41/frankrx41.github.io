@@ -22,48 +22,59 @@
 
 1. 创建一个新的仓库, 并且这个仓库 **推荐** 被命名为 "username.gitlab.io"
 
-1. 在项目里面创建一个 .gitlab-ci.yml 文件, 并且输入以下内容
+1. 进入仓库, 点击 `Set up CL/CD`
+
+    ![set-up-cl-cd](./clip_20220702_094715.png)
+
+1. 点击 Configure pipeline, 这样会创建一个 .gitlab-ci.yml 文件
+
+    ![configure-pipeline](./clip_20220702_094844.png)
+
+1. 在 .gitlab-ci.yml 文件中输入以下内容, 注意缩进在 yml 这门语言中很重要
 
     ```yml
     pages:
-    stage: deploy
-    script:
-    - mkdir .public
-    - cp -r * .public
-    - mv .public public
-    artifacts:
+      stage: deploy
+      script:
+      - mkdir .public
+      - cp -r * .public
+      - mv .public public
+      artifacts:
         paths:
         - public
-    only:
-    - main
+      only:
+      - main
     ```
 
     > **Tip**
     >
     > 你可以使用 Lint 工具检查你的 yml 文件是否有错误
-    > ![Lint](./Clip_20220630_024554.png)
+    > ![use-lint-to-check-yml](./clip_20220630_024554.png)
 
-1. 保存该文件并提交
+1. 点击 Commit changes 提交该文件
+
+    ![commit-changes](./clip_20220702_095248.png)
 
 1. 等待 pipeline 运行完毕, 确保 pipeline 成功
 
 ## 把这个仓库 push 到 gitlab 中
 
-1. 在远端仓库中增加 gitlab 仓库的地址
-    ![add remote repositories](./Clip_20220630_025223.png)
+1. 将 gitlab 中的仓库中的 .gitlab-ci.yml 文件下载下来, 放入到这个仓库中
+
+1. 在这个仓库的远端仓库中增加 gitlab 仓库的地址
+
+    ![add-remote-repositories](./clip_20220630_025223.png)
 
 1. push 到 gitlab 的分支中
 
     > **Note**
     >
-    > * 如果使用 force push 的话, 注意要再传一份 .gitlab-ci.yml 文件
-    > * gitlab 会默认保护主分支, 不允许 force push, 我们需要修改以下设置:
+    > gitlab 会默认保护主分支, 不允许 force push, 如果需要 force push 要修改以下设置:
     >
-    >     进入 /settings/repository 页面, 找到 Protected branches 选项, 把 Allowed to force push 打开
-    >
-    >     ![allow force push](./Clip_20220630_025850.png)
+    > 进入 /settings/repository 页面, 找到 Protected branches 选项, 把 Allowed to force push 打开
+    > ![allow-force-push-in-gitlab](./clip_20220630_025850.png)
 
-1. 最后一步, 点击 <https://username.gitlab.io> 访问你的网站
+1. 最后一步, 点击 username.gitlab.io 访问你的网站
 
 ## 参考
 

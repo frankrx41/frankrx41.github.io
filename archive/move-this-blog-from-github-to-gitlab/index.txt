@@ -24,27 +24,36 @@
 <p>创建一个新的仓库, 并且这个仓库 <strong>推荐</strong> 被命名为 &quot;username.gitlab.io&quot;</p>
 </li>
 <li>
-<p>在项目里面创建一个 .gitlab-ci.yml 文件, 并且输入以下内容</p>
+<p>进入仓库, 点击 <code>Set up CL/CD</code></p>
+<p><img src="/archive/move-this-blog-from-github-to-gitlab/clip_20220702_094715.png" alt="set-up-cl-cd" /></p>
+</li>
+<li>
+<p>点击 Configure pipeline, 这样会创建一个 .gitlab-ci.yml 文件</p>
+<p><img src="/archive/move-this-blog-from-github-to-gitlab/clip_20220702_094844.png" alt="configure-pipeline" /></p>
+</li>
+<li>
+<p>在 .gitlab-ci.yml 文件中输入以下内容, 注意缩进在 yml 这门语言中很重要</p>
 <pre><code class="language-yml">pages:
-stage: deploy
-script:
-- mkdir .public
-- cp -r * .public
-- mv .public public
-artifacts:
+  stage: deploy
+  script:
+  - mkdir .public
+  - cp -r * .public
+  - mv .public public
+  artifacts:
     paths:
     - public
-only:
-- main
+  only:
+  - main
 </code></pre>
 <blockquote class="alerts alerts-tip">
 <p></p>
 <p>你可以使用 Lint 工具检查你的 yml 文件是否有错误
-<img src="/archive/move-this-blog-from-github-to-gitlab/Clip_20220630_024554.png" alt="Lint" /></p>
+<img src="/archive/move-this-blog-from-github-to-gitlab/clip_20220630_024554.png" alt="use-lint-to-check-yml" /></p>
 </blockquote>
 </li>
 <li>
-<p>保存该文件并提交</p>
+<p>点击 Commit changes 提交该文件</p>
+<p><img src="/archive/move-this-blog-from-github-to-gitlab/clip_20220702_095248.png" alt="commit-changes" /></p>
 </li>
 <li>
 <p>等待 pipeline 运行完毕, 确保 pipeline 成功</p>
@@ -53,27 +62,23 @@ only:
 <h2>把这个仓库 push 到 gitlab 中</h2>
 <ol>
 <li>
-<p>在远端仓库中增加 gitlab 仓库的地址
-<img src="/archive/move-this-blog-from-github-to-gitlab/Clip_20220630_025223.png" alt="add remote repositories" /></p>
+<p>将 gitlab 中的仓库中的 .gitlab-ci.yml 文件下载下来, 放入到这个仓库中</p>
+</li>
+<li>
+<p>在这个仓库的远端仓库中增加 gitlab 仓库的地址</p>
+<p><img src="/archive/move-this-blog-from-github-to-gitlab/clip_20220630_025223.png" alt="add-remote-repositories" /></p>
 </li>
 <li>
 <p>push 到 gitlab 的分支中</p>
 <blockquote class="alerts alerts-note">
 <p></p>
-<ul>
-<li>
-<p>如果使用 force push 的话, 注意要再传一份 .gitlab-ci.yml 文件</p>
-</li>
-<li>
-<p>gitlab 会默认保护主分支, 不允许 force push, 我们需要修改以下设置:</p>
-<p>进入 /settings/repository 页面, 找到 Protected branches 选项, 把 Allowed to force push 打开</p>
-<p><img src="/archive/move-this-blog-from-github-to-gitlab/Clip_20220630_025850.png" alt="allow force push" /></p>
-</li>
-</ul>
+<p>gitlab 会默认保护主分支, 不允许 force push, 如果需要 force push 要修改以下设置:</p>
+<p>进入 /settings/repository 页面, 找到 Protected branches 选项, 把 Allowed to force push 打开
+<img src="/archive/move-this-blog-from-github-to-gitlab/clip_20220630_025850.png" alt="allow-force-push-in-gitlab" /></p>
 </blockquote>
 </li>
 <li>
-<p>最后一步, 点击 <a href="https://username.gitlab.io">https://username.gitlab.io</a> 访问你的网站</p>
+<p>最后一步, 点击 username.gitlab.io 访问你的网站</p>
 </li>
 </ol>
 <h2>参考</h2>
