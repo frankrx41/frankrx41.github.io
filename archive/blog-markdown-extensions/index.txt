@@ -250,9 +250,10 @@ print(f'{hello}')
 </code></pre>
 <p>如果只有一行, 那么会隐藏行号</p>
 <h3>支持 checkbox</h3>
-<pre><code class="language-markdown"><input type="checkbox" checked="checked" />这是被选择的
-
-<input type="checkbox" />这是没有被选择的
+<pre><code class="language-markdown">- [x] 这是被选择的
+- [ ] 这是没有被选择的
 </code></pre>
-<p><input type="checkbox" checked="checked" />这是被选择的</p>
-<p><input type="checkbox" />这是没有被选择的</p>
+<ul>
+<li><input type="checkbox" checked="checked" />这是被选择的</li>
+<li><input type="checkbox" />这是没有被选择的</li>
+</ul>

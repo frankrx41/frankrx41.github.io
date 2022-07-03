@@ -14,10 +14,68 @@ import sys
 import getopt
 import os
 from markdown_it import MarkdownIt
+from markdown_it.token import Token
+from typing import List
+from mdit_py_plugins.footnote import footnote_plugin
+from mdit_py_plugins.front_matter import front_matter_plugin
+from mdit_py_plugins.wordcount import wordcount_plugin
 from pyquery import PyQuery
 import datetime
 
-md = MarkdownIt("commonmark").enable('table').enable('strikethrough')
+def tasklists_plugin(md: MarkdownIt):
+    def fcn(state):
+        tokens: List[Token] = state.tokens
+        for i in range(2, len(tokens) - 1):
+
+            if is_todo_item(tokens, i):
+                todoify(tokens[i], tokens[i].__class__)
+
+    md.core.ruler.after("inline", "github-tasklists", fcn)
+
+    def is_inline(token):
+        return token.type == "inline"
+
+    def is_paragraph(token):
+        return token.type == "paragraph_open"
+
+    def is_list_item(token):
+        return token.type == "list_item_open"
+
+    def starts_with_todo_markdown(token):
+        # leading whitespace in a list item is already trimmed off by markdown-it
+        return (
+            token.content.startswith("[ ] ")
+            or token.content.startswith("[x] ")
+            or token.content.startswith("[X] ")
+        )
+
+    def is_todo_item(tokens, index):
+        return (
+            is_inline(tokens[index])
+            and is_paragraph(tokens[index - 1])
+            and is_list_item(tokens[index - 2])
+            and starts_with_todo_markdown(tokens[index])
+        )
+    
+    def make_checkbox(token, token_constructor):
+        checkbox = token_constructor("html_inline", "", 0)
+        if token.content.startswith("[ ] "):
+            checkbox.content = (
+                '<input type="checkbox" />'
+            )
+        elif token.content.startswith("[x] ") or token.content.startswith("[X] "):
+            checkbox.content = (
+                '<input type="checkbox" checked="checked" />'
+            )
+        return checkbox
+
+    def todoify(token: Token, token_constructor):
+        assert token.children is not None
+        token.children.insert(0, make_checkbox(token, token_constructor))
+        token.children[1].content = token.children[1].content[4:]
+        token.content = token.content[4:]
+
+md = MarkdownIt("commonmark").enable('table').enable('strikethrough').use(front_matter_plugin).use(footnote_plugin).use(tasklists_plugin).use(wordcount_plugin)
 import re
 
 from colorama import Fore
@@ -130,11 +188,6 @@ def process_single_file(force_covert: bool, print_html: bool, blog_dir: os.path,
                         {0: '<blockquote>\n<p><strong>important:*</strong>', 1: '<blockquote class="alerts alerts-important">\n<p>'}]
         for str_name in str_list:
             coverted_html = re.sub(str_name[0], str_name[1], coverted_html, flags=re.IGNORECASE)
-
-        # Checkbox
-        coverted_html = coverted_html.replace("[ ] ", '<input type="checkbox" />')
-        coverted_html = coverted_html.replace("[x] ", '<input type="checkbox" checked="checked" />')
-
 
         if print_html:
             print(coverted_html)
