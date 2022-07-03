@@ -69,9 +69,9 @@
 <p><a href="http://google.com">http://google.com</a></p>
 <p><a href="http://google.com">谷歌</a></p>
 <h3>图片</h3>
-<pre><code class="language-markdown">![example-image](./Clip_20220630_061432.png)
+<pre><code class="language-markdown">![example-image](./clip_20220630_061432.png)
 </code></pre>
-<p><img src="/archive/blog-markdown-extensions/Clip_20220630_061432.png" alt="example-image" /></p>
+<p><img src="/archive/blog-markdown-extensions/clip_20220630_061432.png" alt="example-image" /></p>
 <h2>Commonmark 的扩展</h2>
 <h3>支持删除线</h3>
 <pre><code class="language-markdown">在段落中可以使用 ~~删除线~~
@@ -202,16 +202,16 @@
 <h3>支持图片 float 和放大</h3>
 <pre><code class="language-markdown">可以在图片的 [] 中加入 `&gt;` `&lt;` `&gt;&lt;` 来表示 左漂浮, 右漂浮 和 居中
 
-![example-image &lt;](./Clip_20220630_061432.png)
-![example-image &gt;](./Clip_20220630_061432.png)
-![example-image &gt;&lt;](./Clip_20220630_061432.png)
+![example-image &lt;](./clip_20220630_061432.png)
+![example-image &gt;](./clip_20220630_061432.png)
+![example-image &gt;&lt;](./clip_20220630_061432.png)
 
 另外, 图片被点击后可以被放大
 </code></pre>
 <p>可以在图片的 [] 中加入 <code>&gt;</code> <code>&lt;</code> <code>&gt;&lt;</code> 来表示 左漂浮, 右漂浮 和 居中</p>
-<p><img src="/archive/blog-markdown-extensions/Clip_20220630_061432.png" alt="example-image &lt;" />
-<img src="/archive/blog-markdown-extensions/Clip_20220630_061432.png" alt="example-image &gt;" />
-<img src="/archive/blog-markdown-extensions/Clip_20220630_061432.png" alt="example-image &gt;&lt;" /></p>
+<p><img src="/archive/blog-markdown-extensions/clip_20220630_061432.png" alt="example-image &lt;" />
+<img src="/archive/blog-markdown-extensions/clip_20220630_061432.png" alt="example-image &gt;" />
+<img src="/archive/blog-markdown-extensions/clip_20220630_061432.png" alt="example-image &gt;&lt;" /></p>
 <p>另外, 图片被点击后可以被放大</p>
 <h3>支持 kbd</h3>
 <pre><code class="language-markdown">会自动把被 ` 引起来的一些字符翻译成按键, 比如

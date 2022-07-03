@@ -5,25 +5,25 @@
 </li>
 <li>
 <p>Click &quot;View network status and tasks&quot;</p>
-<p><img src="/archive/find-wifi-password-in-windows-11/Clip_20220628_151606.png" alt="control panel" /></p>
+<p><img src="/archive/find-wifi-password-in-windows-11/clip_20220628_151606.png" alt="control panel" /></p>
 </li>
 <li>
 <p>Click your wifi name</p>
-<p><img src="/archive/find-wifi-password-in-windows-11/Clip_20220628_151710.png" alt="network" /></p>
+<p><img src="/archive/find-wifi-password-in-windows-11/clip_20220628_151710.png" alt="network" /></p>
 </li>
 <li>
 <p>Click &quot;Wireless Properties&quot; in WLAN Status window</p>
-<p><img src="/archive/find-wifi-password-in-windows-11/Clip_20220628_151917.png" alt="WLAN Status window" /></p>
+<p><img src="/archive/find-wifi-password-in-windows-11/clip_20220628_151917.png" alt="WLAN Status window" /></p>
 </li>
 <li>
 <p>Goto &quot;Security&quot; tab and check &quot;Show characters&quot; box.</p>
-<p><img src="/archive/find-wifi-password-in-windows-11/Clip_20220628_151947.png" alt="Security" /></p>
+<p><img src="/archive/find-wifi-password-in-windows-11/clip_20220628_151947.png" alt="Security" /></p>
 </li>
 </ol>
 <blockquote class="alerts alerts-tip">
 <p></p>
 <p>You can open control panel by type &quot;control&quot; in start &gt; menu
-<img src="/archive/find-wifi-password-in-windows-11/Clip_20220628_224137.png" alt="start menu" />
+<img src="/archive/find-wifi-password-in-windows-11/clip_20220628_224137.png" alt="start menu" />
 or in Run window
-<img src="/archive/find-wifi-password-in-windows-11/Clip_20220628_224256.png" alt="run window" /></p>
+<img src="/archive/find-wifi-password-in-windows-11/clip_20220628_224256.png" alt="run window" /></p>
 </blockquote>

@@ -20,7 +20,7 @@ Therefore, the only way to disable `win` + `L` is to disable the lock screen fun
 
 1. Set 'DisableLockWorkstation' value to '2'.
 
-    ![DisableLockWorkstation](./Clip_20220630_093805.png)
+    ![DisableLockWorkstation](./clip_20220630_093805.png)
 
     > **Note** 1: enbale 2: disable
 

@@ -6,9 +6,9 @@ In Windows OS, programs that can open files of this type will be placed in **Ope
 
 As you can see, there are two deleted program in my right-click menu open with list.
 
-![right menu](./Clip_20220622_011044.png)
+![right menu](./clip_20220622_011044.png)
 
-![open with list](./Clip_20220622_012324.png)
+![open with list](./clip_20220622_012324.png)
 
 Google Chrome and WPS PDF.
 
@@ -48,7 +48,7 @@ To find out where the Key is in the registry, I do follow:
 
 Unlike last time, this time I found a lot of similar keys.
 
-![found "Google Chrome"](./Clip_20220622_023233.png)
+![found "Google Chrome"](./clip_20220622_023233.png)
 
 So I switched my thinking and started with the file extension.
 
@@ -58,7 +58,7 @@ Because the extension of this file is `.html`, so I goto this location:
 HKEY_CLASSES_ROOT\.html\OpenWithProgids
 ```
 
-![.html OpenWithProgids](./Clip_20220622_013000.png)
+![.html OpenWithProgids](./clip_20220622_013000.png)
 
 Here I found a suspicious key `ChromeHTML`, so I deleted it.
 
@@ -79,7 +79,7 @@ In the process of searching, I found that there is a `kugou8` key in my registry
 
 I created an mp3 file, and in the open with list, there is indeed a kugou program.
 
-![Open with kugou](./Clip_20220622_033135.png)
+![Open with kugou](./clip_20220622_033135.png)
 
 From experience, I suspect it is and . mp3 this suffix is bound.
 So I goto:
@@ -90,7 +90,7 @@ HKEY_CLASSES_ROOT\.mp3
 
 And found a key `kugou8.mp3`
 
-![mp3 key](./Clip_20220622_032016.png)
+![mp3 key](./clip_20220622_032016.png)
 
 After I remove it, "Kugou" is remove from my open with list.
 
@@ -98,4 +98,4 @@ However, there are still many other files that are bundled with kugou. Like `.wa
 
 I'm a little tired, so I looked for kugou8 globally in the registry and deleted them all.
 
-![delete kugou](./Clip_20220622_033937.png)
+![delete kugou](./clip_20220622_033937.png)

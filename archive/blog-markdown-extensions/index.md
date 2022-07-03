@@ -87,10 +87,10 @@
 ### 图片
 
 ```markdown
-![example-image](./Clip_20220630_061432.png)
+![example-image](./clip_20220630_061432.png)
 ```
 
-![example-image](./Clip_20220630_061432.png)
+![example-image](./clip_20220630_061432.png)
 
 ## Commonmark 的扩展
 
@@ -229,18 +229,18 @@
 ```markdown
 可以在图片的 [] 中加入 `>` `<` `><` 来表示 左漂浮, 右漂浮 和 居中
 
-![example-image <](./Clip_20220630_061432.png)
-![example-image >](./Clip_20220630_061432.png)
-![example-image ><](./Clip_20220630_061432.png)
+![example-image <](./clip_20220630_061432.png)
+![example-image >](./clip_20220630_061432.png)
+![example-image ><](./clip_20220630_061432.png)
 
 另外, 图片被点击后可以被放大
 ```
 
 可以在图片的 [] 中加入 `>` `<` `><` 来表示 左漂浮, 右漂浮 和 居中
 
-![example-image <](./Clip_20220630_061432.png)
-![example-image >](./Clip_20220630_061432.png)
-![example-image ><](./Clip_20220630_061432.png)
+![example-image <](./clip_20220630_061432.png)
+![example-image >](./clip_20220630_061432.png)
+![example-image ><](./clip_20220630_061432.png)
 
 另外, 图片被点击后可以被放大
 
