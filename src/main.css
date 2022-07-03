@@ -397,17 +397,25 @@ footer {
   background-color: #272727;
   font-size: 0.85rem;
   padding: .5rem 2rem;
+  overflow: hidden;
 }
 
 footer a {
   text-decoration: none;
+  color: #8d9eff
 }
 
 footer a:hover {
   text-decoration: underline;
 }
 
-footer .footer-link {
+footer a:visited {
+  text-decoration: underline;
+  color: #8d9eff
+}
+
+footer div.footer-link {
   float: right;
   font-style: italic;
+  margin: .5rem 0 0 0;
 }

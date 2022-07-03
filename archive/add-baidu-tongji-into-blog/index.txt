@@ -1,0 +1,39 @@
+<h1>如何在本博客中加入百度统计</h1>
+<p>使用百度统计可以看到你博客被访问的情况</p>
+<h2>介绍如何给博客中加入百度统计</h2>
+<p>下面的步骤都是以我的博客为例子的</p>
+<ol>
+<li>
+<p>在 <a href="https://tongji.baidu.com/web/welcome/login">这里</a> 登录或注册一个百度账户</p>
+</li>
+<li>
+<p>点击 &quot;使用设置&quot;
+<img src="/archive/add-baidu-tongji-into-blog/clip_20220704_045437.png" alt="click-settings" /></p>
+</li>
+<li>
+<p>点击 &quot;新增网站&quot;
+<img src="/archive/add-baidu-tongji-into-blog/clip_20220704_045536.png" alt="click-new-website" /></p>
+</li>
+<li>
+<p>输入你的博客信息</p>
+<p>这里是我的博客的示例
+<img src="/archive/add-baidu-tongji-into-blog/clip_20220704_045700.png" alt="web-info-example" /></p>
+<blockquote class="alerts alerts-note">
+<p> 如果你的博客由 <code>https://</code> 开头, 那 &quot;网站首页&quot; 请加上它. 百度默认是使用 http 协议来进行的访问</p>
+</blockquote>
+</li>
+<li>
+<p>点击 &quot;获取代码&quot;, 按照百度的文档将代码放到博客中即可</p>
+<p><img src="/archive/add-baidu-tongji-into-blog/clip_20220704_050156.png" alt="click-get-code" /></p>
+</li>
+<li>
+<p>在博客中提交后, 重新登录, 并检查你的代码是否安装正确</p>
+<p><img src="/archive/add-baidu-tongji-into-blog/clip_20220704_050338.png" alt="check-code" /></p>
+</li>
+</ol>
+<p>将百度统计加入博客后, 就可以登录 <a href="https://tongji.baidu.com/">百度统计的主页</a> 进行查看自己博客被浏览的情况了</p>
+<h2>介绍一下本博客的特殊情况</h2>
+<p>因为本博客所有的页面都是先加载 index.html, 然后再在里面动态的更新内容</p>
+<p>所以, 百度统计的识别代码只需要在 index.html 中放一次就好了</p>
+<p>另外, 因为这个博客会同时部署到 github 和 gitlab 中, 按照百度统计的要求, 是需要两个不同的识别代码, 也就是需要为了 github 和 gitlab 制作两个不同的 index.html, 里面放上的各自不同的识别代码</p>
+<p>但是我不打算这样做, 所以我加入了一个检查当前网站 url 的代码, 再根据当前网站的 url 返回给百度对应的识别码</p>

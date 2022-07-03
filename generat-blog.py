@@ -221,7 +221,7 @@ def process_single_file(force_covert: bool, print_html: bool, blog_dir: os.path,
     md_file_full_name_path = os.path.join(archive_full_path, md_file_name)
     time_create = os.path.getctime(md_file_full_name_path)
     time_modify = os.path.getmtime(md_file_full_name_path)
-    time_format = "%Y-%m-%d %H:%M"
+    time_format = "%Y-%m-%d %H:00"
     time_create_str = datetime.datetime.fromtimestamp(time_create).strftime(time_format)
     time_modify_str = datetime.datetime.fromtimestamp(time_modify).strftime(time_format)
     output_html += f'<div class="archive-info">Word: {int(len(pq.text())/100+.5)*100} | Posted: <nobr>{time_create_str}</nobr> | Modified: <nobr>{time_modify_str}</nobr></div>'
