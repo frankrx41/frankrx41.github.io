@@ -18,7 +18,6 @@ from markdown_it.token import Token
 from typing import List
 from mdit_py_plugins.footnote import footnote_plugin
 from mdit_py_plugins.front_matter import front_matter_plugin
-from mdit_py_plugins.wordcount import wordcount_plugin
 from pyquery import PyQuery
 import datetime
 
@@ -75,7 +74,7 @@ def tasklists_plugin(md: MarkdownIt):
         token.children[1].content = token.children[1].content[4:]
         token.content = token.content[4:]
 
-md = MarkdownIt("commonmark").enable('table').enable('strikethrough').use(front_matter_plugin).use(footnote_plugin).use(tasklists_plugin).use(wordcount_plugin)
+md = MarkdownIt("commonmark").enable('table').enable('strikethrough').use(front_matter_plugin).use(footnote_plugin).use(tasklists_plugin)
 import re
 
 from colorama import Fore
@@ -207,6 +206,7 @@ def process_single_file(force_covert: bool, print_html: bool, blog_dir: os.path,
     # To main page div
     output_html = ''
     pq = PyQuery(coverted_html)
+    
     output_html += f'<div class="archive-list" onClick="location.href=\'?{blog_dir}\'">'
     output_html += f'<h1>{pq("h1").html()}</h1>'
     output_html += f'<p>{pq("p").html()}</p>'
@@ -214,12 +214,10 @@ def process_single_file(force_covert: bool, print_html: bool, blog_dir: os.path,
     md_file_full_name_path = os.path.join(archive_full_path, md_file_name)
     time_create = os.path.getctime(md_file_full_name_path)
     time_modify = os.path.getmtime(md_file_full_name_path)
-    time_format = "%Y-%m-%d"
+    time_format = "%Y-%m-%d %H:%M"
     time_create_str = datetime.datetime.fromtimestamp(time_create).strftime(time_format)
     time_modify_str = datetime.datetime.fromtimestamp(time_modify).strftime(time_format)
-    if time_create_str == time_modify_str:
-        time_modify_str = ''
-    output_html += f'<div class="archive-info">{len(coverted_html)} | {time_create_str} {time_modify_str}</div>'
+    output_html += f'<div class="archive-info">Word: {int(len(pq.text())/100+.5)*100} | Posted: <nobr>{time_create_str}</nobr> | Modified: <nobr>{time_modify_str}</nobr></div>'
     output_html +='</div>\n'
     return output_html
 
