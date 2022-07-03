@@ -16,11 +16,13 @@
         (function () {
             var hm = document.createElement("script");
             // gitlab
-            hm.src = "https://hm.baidu.com/hm.js?345a8297f35bf83010e555bfad969364";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
+            if (location.hostname == 'frankrx41.gitlab.io') {
+                hm.src = "https://hm.baidu.com/hm.js?345a8297f35bf83010e555bfad969364";
+            }
             // github
-            hm.src = "https://hm.baidu.com/hm.js?0074635d7431f59534c88cef7030459b";
+            if (location.hostname == 'frankrx41.github.io') {
+                hm.src = "https://hm.baidu.com/hm.js?0074635d7431f59534c88cef7030459b";
+            }
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(hm, s);
         })();
@@ -80,9 +82,11 @@
                 if (response.ok) {
                     return response.text().then(response_text => {
                         article.innerHTML = response_text;
+                        // Set title
+                        if (load_page) document.title = article.getElementsByTagName('h1')[0].innerText;
                         // highlight.js
                         article.querySelectorAll('pre code').forEach(hljs.highlightElement);
-                        // add line number
+                        // Add line number
                         article.querySelectorAll('pre code').forEach(pre_code_html => {
                             pre_code_text = "";
                             pre_code_html_split = pre_code_html.innerHTML.split("\n");

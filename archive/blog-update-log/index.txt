@@ -32,6 +32,7 @@
 </li>
 <li>
 <p><input type="checkbox" checked="checked" />主页的文章加入第一段的文本</p>
+<p>集成在 generat-blog.py 中</p>
 </li>
 <li>
 <p><input type="checkbox" />加入标签, 并且可以按标签进行分类</p>
@@ -41,9 +42,11 @@
 </li>
 <li>
 <p><input type="checkbox" checked="checked" />图片可以单击放大</p>
+<p>使用 css 和 js 实现</p>
 </li>
 <li>
 <p><input type="checkbox" checked="checked" />代码块可以显示行号</p>
+<p>使用 css 和 js 实现</p>
 </li>
 <li>
 <p><input type="checkbox" checked="checked" />代码会进行语法高亮</p>
@@ -51,6 +54,7 @@
 </li>
 <li>
 <p><input type="checkbox" checked="checked" />可以快速选择代码块</p>
+<p>使用 js 实现</p>
 </li>
 <li>
 <p><input type="checkbox" /><code>H2</code> <code>H3</code> 段加入 link</p>
@@ -60,6 +64,9 @@
 </li>
 <li>
 <p><input type="checkbox" />生成文章结构目录</p>
+</li>
+<li>
+<p><input type="checkbox" />生成文章二维码</p>
 </li>
 <li>
 <p><input type="checkbox" />加入响应式的 css</p>
