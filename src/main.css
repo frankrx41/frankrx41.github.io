@@ -397,5 +397,17 @@ footer {
   background-color: #272727;
   font-size: 0.85rem;
   padding: .5rem 2rem;
-  text-align: right;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+footer .footer-link {
+  float: right;
+  font-style: italic;
 }
