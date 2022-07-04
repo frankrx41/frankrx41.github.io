@@ -1,2 +1,2 @@
-py generat-blog.py -f
+py generat-blog.py -m -w -f
 pause

@@ -5,7 +5,9 @@
 # -f force convert
 # -p print html
 #
-# -n not write to {blog_path_name}/index.txt
+# -m generate sitemap
+# -w write to {blog_path_name}/index.txt
+#
 # -s <blog_path_name> force covert this md file, NOT update /archive/index.txt
 #
 
@@ -20,6 +22,7 @@ from mdit_py_plugins.footnote import footnote_plugin
 from mdit_py_plugins.front_matter import front_matter_plugin
 from pyquery import PyQuery
 import datetime
+import lxml.html
 
 def tasklists_plugin(md: MarkdownIt):
     def fcn(state):
@@ -83,6 +86,7 @@ from colorama import Style
 archives_path = os.path.join('./', 'archive')
 html_file_name          = 'index.txt'
 md_file_name            = 'index.md'
+sitemap_file_name       = 'sitemap.xml'
 
 stat_cov = 0
 stat_err = 0
@@ -94,10 +98,11 @@ def main(argv):
     force_covert    : bool      = False
     print_html      : bool      = False
     single_file     : os.path   = ""
-    save_to_file    : bool      = True
+    save_file       : bool      = False
+    update_sitemap  : bool      = False
 
     try:
-        opts, args = getopt.getopt(argv,"fps:n")
+        opts, args = getopt.getopt(argv,"fpmws:")
     except getopt.GetoptError as err:
         print(err)
         sys.exit(2)
@@ -108,15 +113,19 @@ def main(argv):
             print_html = True
         elif opt == '-s':
             single_file = arg
-        elif opt == '-n':
-            save_to_file = False
+        elif opt == '-w':
+            save_file = True
+        elif opt == '-m':
+            update_sitemap = True
     
     if single_file != "":
-        process_single_file(force_covert, print_html, single_file, save_to_file)
+        process_single_file(force_covert, print_html, single_file, save_file)
     else:
-        html_text = process_archives(force_covert, print_html, save_to_file)
+        html_text = process_archives(force_covert, print_html, save_file)
         print_stat()
-        write_html(os.path.join(archives_path, html_file_name), html_text)
+        write_archive_html(os.path.join(archives_path, html_file_name), html_text, print_html)
+        if update_sitemap or 1:
+            generate_sitemap(os.path.join('./', sitemap_file_name), html_text, print_html)
     return
 
 # Return home page single archive html text
@@ -214,9 +223,10 @@ def process_single_file(force_covert: bool, print_html: bool, blog_dir: os.path,
     output_html = ''
     pq = PyQuery(coverted_html)
     
-    output_html += f'<div class="archive-list" onClick="location.href=\'?{blog_dir}\'">'
+    url = f"'/?{blog_dir}'"
+    output_html += f'<div class="archive-list" onClick="location.href={url}">'
     output_html += f'<h1>{pq("h1").html()}</h1>'
-    output_html += f'<p><a href="?{blog_dir}"></a> {pq("p").html()}</p>'
+    output_html += f'<p><a href={url}></a> {pq("p").html()}</p>'
 
     md_file_full_name_path = os.path.join(archive_full_path, md_file_name)
     time_create = os.path.getctime(md_file_full_name_path)
@@ -254,15 +264,34 @@ def print_stat():
     return
 
 
-def write_html(file_full_path, html_text):
-    print('--- output ---')
-    print(html_text)
+def write_archive_html(archive_full_path, html_text, print_html):
+    if print_html:
+        print(f'--- {archive_full_path} ---')
+        print(html_text)
 
-    file1 = open(file_full_path, 'w', encoding='UTF-8')
-    file1.write(html_text)
-    file1.close()
+    file = open(archive_full_path, 'w', encoding='UTF-8')
+    file.write(html_text)
+    file.close()
     return
 
+def generate_sitemap(sitemap_file_name, html_text, print_html):
+    pq = PyQuery(html_text)
+    sitemap_text = '<?xml version="1.0" encoding="utf-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    for x in pq.find('a'):
+        x = PyQuery(x)
+        site_url = x.attr('href')
+        sitemap_text += f'<url><loc>{site_url}</loc></url>\n'
+    sitemap_text += '</urlset>'
+
+    if print_html:
+        print(f'--- {sitemap_file_name} ---')
+        print(sitemap_text)
+
+    file = open(sitemap_file_name, 'w', encoding='UTF-8')
+    file.write(sitemap_text)
+    file.close()
+    
+    return
 
 if __name__ == "__main__":
     main(sys.argv[1:])
