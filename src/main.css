@@ -199,6 +199,9 @@ article p code {
 
 article a {
   color: var(--theme-text-a-background-color);
+  position: relative;
+  display: inline-block;
+  margin: 0;
 }
 
 article a:visited,
@@ -215,9 +218,23 @@ article a:active {
   text-decoration: none;
 }
 
+article a:hover:after {
+  content: attr(href);
+  white-space: nowrap;
+  background-color: #3f5669;
+  border-radius: 0.25rem;
+  padding: .4rem;
+  font-size: .65em;
+  line-height: .65em;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 0rem;
+}
+
 article button {
   margin-top: 0;
-  font-size: .65rem;
+  font-size: .65em;
 }
 
 article input[type=checkbox] {
