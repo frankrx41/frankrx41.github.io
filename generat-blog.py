@@ -216,7 +216,7 @@ def process_single_file(force_covert: bool, print_html: bool, blog_dir: os.path,
     
     output_html += f'<div class="archive-list" onClick="location.href=\'?{blog_dir}\'">'
     output_html += f'<h1>{pq("h1").html()}</h1>'
-    output_html += f'<p>{pq("p").html()}</p>'
+    output_html += f'<p><a href="?{blog_dir}"></a> {pq("p").html()}</p>'
 
     md_file_full_name_path = os.path.join(archive_full_path, md_file_name)
     time_create = os.path.getctime(md_file_full_name_path)

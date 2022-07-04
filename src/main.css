@@ -113,6 +113,14 @@ article div.archive-list p {
   min-height: 5rem;
 }
 
+article div.archive-list p a {
+  text-decoration: none;
+}
+
+article div.archive-list p a::before {
+  content: "❐";
+}
+
 article div.archive-list:hover {
   border-color: #5186ec;
   cursor: pointer;
